@@ -50,6 +50,13 @@ body {
 	margin-bottom: 40px;
 }
 
+.container .body .left h4 a {
+	color: #000;
+	font-weight: bold;
+	font-size: 90%;
+	text-decoration: none;
+}
+
 .container .body .left p {
 	font-size: 20px;
 }
