@@ -1,6 +1,7 @@
 class CreateAgencies < ActiveRecord::Migration
   def change
     create_table :agencies do |t|
+      t.references :user
       t.string :name
       t.string :phone
       t.string :email

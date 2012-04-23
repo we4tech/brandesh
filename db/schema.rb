@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120423051553) do
 
   create_table "agencies", :force => true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "phone"
     t.string   "email"
@@ -56,7 +57,6 @@ ActiveRecord::Schema.define(:version => 20120423051553) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "agency_id"
     t.string   "name"
     t.string   "designation"
     t.datetime "created_at",                             :null => false

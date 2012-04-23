@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :designation, :email, :password, :password_confirmation, :remember_me
   attr_accessible :agency_id, :designation, :name
 
-  belongs_to :agency
+  has_one :agency
 
   accepts_nested_attributes_for :agency
 
