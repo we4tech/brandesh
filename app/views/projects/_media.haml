@@ -6,7 +6,7 @@
   = f.text_field :media_type
 
   = f.label :published_on
-  = f.text_field :published_on
+  = f.text_field :published_on, :class => 'date_fields'
 
   = f.label :category
   = f.select :category, ['Choose one', 'Choose two']

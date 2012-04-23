@@ -17,4 +17,6 @@
 
 jQuery(document).ready(function(){
   $('.tabs_container').tabs();
+
+  $('.date_fields').datepicker();
 })
