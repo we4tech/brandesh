@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423051553) do
+ActiveRecord::Schema.define(:version => 20120423113202) do
 
   create_table "agencies", :force => true do |t|
     t.integer  "user_id"
@@ -50,10 +50,16 @@ ActiveRecord::Schema.define(:version => 20120423051553) do
     t.string   "media_type"
     t.date     "published_on"
     t.string   "category"
-    t.string   "media_filename"
-    t.string   "proof_filename"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
+    t.string   "proof_file_name"
+    t.string   "proof_content_type"
+    t.integer  "proof_file_size"
+    t.datetime "proof_updated_at"
   end
 
   create_table "users", :force => true do |t|

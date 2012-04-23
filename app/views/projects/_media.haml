@@ -2,7 +2,7 @@
 %hr/
 %fieldset
   = f.label :media_type
-  = f.text_field :media_type, :class => 'input span6', :placeholder => "Account manager's Name"
+  = f.select :media_type, ['Video', 'What else?'], :class => 'input span6'
 
   = f.label :published_on
   = f.text_field :published_on, :class => 'date_fields input span6'
