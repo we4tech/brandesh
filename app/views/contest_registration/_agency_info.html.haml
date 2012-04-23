@@ -1,0 +1,47 @@
+%fieldset
+  %legend
+    Agency Information
+  = fields_for :agency do |a|
+    = a.label :name, 'Agency Name'
+    %br
+    = a.text_field :name
+    %br
+    %br
+
+    = a.label :website, 'Agency Website'
+    %br
+    = a.url_field :website
+    %br
+    %br
+
+    = a.label :email, 'Agency Email Address'
+    %br
+    = a.email_field :email
+    %br
+    %br
+
+    = a.label :phone, 'Agency Phone'
+    %br
+    = a.phone_field :phone
+    %br
+    %br
+
+    %h3 Agency Address Information
+
+    = a.label :street, 'Street Address'
+    %br
+    = a.text_field :street
+    %br
+    %br
+
+    = a.label :area
+    %br
+    = a.text_field :area
+    %br
+    %br
+
+    = a.label :city
+    %br
+    = a.text_field :city
+    %br
+    %br

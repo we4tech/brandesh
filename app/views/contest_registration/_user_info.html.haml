@@ -1,0 +1,30 @@
+%fieldset
+  %legend
+    Basic Information
+  = fields_for :user do |u|
+    = u.label :name, 'Submitter\'s Full Name'
+    %br
+    = u.text_field :name
+    %br
+    %br
+    = u.label :designation, 'Your designation in current company'
+    %br
+    = u.text_field :designation
+
+    %br
+    %br
+    = u.label :email, 'Your email address'
+    %br
+    = u.email_field :email
+
+    %br
+    %br
+    = u.label :password
+    %br
+    = u.password_field :password
+
+    %br
+    %br
+    = u.label :password_confirmation, 'Re-enter password'
+    %br
+    = u.password_field :password_confirmation

@@ -1,0 +1,8 @@
+%h1 Contest Registration
+= form_for(@user, :url => contest_registration_path) do |f|
+  = errors_for(@user).html_safe
+  .basic
+    = render 'user_info'
+  .agency
+    = render 'agency_info'
+  = f.submit
