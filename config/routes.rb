@@ -4,5 +4,6 @@ Brandesh::Application.routes.draw do
   root :to => "contest_registration#new"
 
   post 'contest_registration', :to => 'contest_registration#create', :as => 'contest_registration'
+  post 'ads_', :to => 'contest_registration#create', :as => 'contest_registration'
 
 end

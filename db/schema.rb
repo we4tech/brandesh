@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423023142) do
+ActiveRecord::Schema.define(:version => 20120423051553) do
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,36 @@ ActiveRecord::Schema.define(:version => 20120423023142) do
     t.string   "city"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.integer  "agency_id"
+    t.string   "ad_title"
+    t.string   "ad_headline"
+    t.text     "ad_description"
+    t.text     "ad_short_rationale"
+    t.text     "ad_consumer_insight"
+    t.string   "brand"
+    t.string   "brand_manager"
+    t.text     "brand_details"
+    t.string   "account_manager"
+    t.string   "creative_directory"
+    t.string   "art_director"
+    t.string   "copyright"
+    t.string   "illustrator"
+    t.string   "photographer"
+    t.string   "digital_producer"
+    t.string   "creative_developer"
+    t.string   "creative_strategy"
+    t.string   "sound_director"
+    t.text     "additional_credits"
+    t.string   "media_type"
+    t.date     "published_on"
+    t.string   "category"
+    t.string   "media_filename"
+    t.string   "proof_filename"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "users", :force => true do |t|
