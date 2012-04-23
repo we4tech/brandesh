@@ -13,3 +13,7 @@
  *= require ../../../vendor/assets/stylesheets/jqueryui/ui-darkness/jquery-ui.css
 
 */
+
+input, label{
+    display: block;
+}

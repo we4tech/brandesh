@@ -1,0 +1,27 @@
+%h1 Project Detail
+= form_for(@project, :url => new_project_path) do |f|
+  #container
+    = errors_for(@project).html_safe
+    .tabs_container
+      %ul
+        %li
+          %a{href: '#ads'} Ad Details
+        %li
+          %a{href: '#brand'} Brand
+        %li
+          %a{href: '#credit'} Credits
+        %li
+          %a{href: '#media'} Media
+
+
+      #ads
+        = render 'adverts', :f => f
+      #brand
+        = render 'brand', :f => f
+      #credit
+        = render 'credits', :f => f
+      #media
+        = render 'media', :f => f
+
+
+      = f.submit 'Save Project Information'

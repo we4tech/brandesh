@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :agency_id, :designation, :name
 
   has_one :agency
+  has_many :projects, :through => :agency
 
   accepts_nested_attributes_for :agency
 

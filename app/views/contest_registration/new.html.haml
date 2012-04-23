@@ -2,7 +2,7 @@
 = form_for(@user, :url => contest_registration_path) do |f|
   #container
     = errors_for(@user).html_safe
-    #tabs_container
+    .tabs_container
       %ul
         %li
           %a{href: '#basic_info'} Basic Info

@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require ../../../vendor/assets/javascripts/jqueryui/jquery-ui.min.js
 //= require_tree .
+
+jQuery(document).ready(function(){
+  $('.tabs_container').tabs();
+})
