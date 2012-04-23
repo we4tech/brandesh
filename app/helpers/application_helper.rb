@@ -22,4 +22,8 @@ module ApplicationHelper
     end
     html
   end
+
+  def page_title(title)
+    @page_title = title
+  end
 end

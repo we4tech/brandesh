@@ -1,0 +1,26 @@
+.container{:role => "main"}
+  %h1.visuallyhidden Entry Registration
+  %a.logout.pull-right{:href => "#"} Lougout
+  .row.margin_top_4
+    %h2.visuallyhidden Registration Form
+    / Aside
+    %aside.span2{:role => "contemporary"}
+      %h1.visuallyhidden User Sidebar
+      %nav.sidenav
+        %h1.visuallyhidden User Control
+        %ul
+          %li
+            %i.icon-question-sign
+            %a{"data-toggle" => "modal", :href => "#entryHelp"} Entry Help
+          %li
+            %i.icon-info-sign
+            %a{"data-toggle" => "modal", :href => "#contestGuide"} Contest Guide
+          %li
+            %i.icon-calendar
+            %a{:href => "#"} Schedule
+
+    %p
+      = notice
+    %p
+      = alert
+    = yield

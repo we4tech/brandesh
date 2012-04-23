@@ -1,17 +1,19 @@
-%h1 Contest Registration
-= form_for(@user, :url => contest_registration_path) do |f|
-  #container
+- page_title 'Contest Registration'
+%section.span10.content_section
+  %h1.visuallyhidden Account Information
+  = form_for(@user, :url => contest_registration_path) do |f|
     = errors_for(@user).html_safe
-    .tabs_container
-      %ul
-        %li
-          %a{href: '#basic_info'} Basic Info
-        %li
-          %a{href: '#agency_info'} Agency Info
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#basic_info"} Basic Info
+      %li
+        %a{"data-toggle" => "tab", :href => "#agency_info"} Agency Info
 
-
-      #basic_info
+    .tab-content{:id => ""}
+      #basic_info.tab-pane.active
         = render 'user_info'
-      #agency_info
+      #agency_info.tab-pane
         = render 'agency_info'
-      = f.submit 'Save Information'
+      %hr/
+      %fieldset
+        = f.submit 'Save Information', :class => 'btn btn-primary'

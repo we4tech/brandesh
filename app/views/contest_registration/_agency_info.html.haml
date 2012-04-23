@@ -1,47 +1,31 @@
+%h2 Agency Information
+%hr/
 %fieldset
-  %legend
-    Agency Information
   = fields_for :agency do |a|
+    %legend Agency Details
+    %br/
     = a.label :name, 'Agency Name'
-    %br
-    = a.text_field :name
-    %br
-    %br
+    = a.text_field :name, :class => 'input span6', :placeholder => "Name of Your Agency"
 
     = a.label :website, 'Agency Website'
-    %br
-    = a.url_field :website
-    %br
-    %br
+    = a.url_field :website, :class => 'input span6', :placeholder => "http://"
 
     = a.label :email, 'Agency Email Address'
-    %br
-    = a.email_field :email
-    %br
-    %br
+    = a.email_field :email, :class => 'input span6', :placeholder => "Agency Email Address"
 
     = a.label :phone, 'Agency Phone'
-    %br
-    = a.phone_field :phone
-    %br
-    %br
+    = a.phone_field :phone, :class => 'input span6', :placeholder => "Agency Phone"
 
-    %h3 Agency Address Information
-
+    %hr/
+    %legend Agency Address Information
     = a.label :street, 'Street Address'
-    %br
-    = a.text_field :street
-    %br
-    %br
+    = a.text_field :street, :class => 'input span6', :placeholder => "Enter Road,Street,Block name or number"
+    %span.help-inline ex:House-157,Block-D,Shahid Sayem Road
 
     = a.label :area
-    %br
-    = a.text_field :area
-    %br
-    %br
+    = a.text_field :area, :class => 'input span6', :placeholder => "Area Name"
+    %span.help-inline ex:Bashundhara R/A
 
     = a.label :city
-    %br
-    = a.text_field :city
-    %br
-    %br
+    = a.text_field :city, :class => 'input span6', :placeholder => "City Name"
+    %span.help-inline ex:Dhaka

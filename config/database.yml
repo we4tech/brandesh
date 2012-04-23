@@ -4,7 +4,7 @@ global: &global
   timeout: 5000
   username: root
   password: root
-  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  host: localhost
 
 development:
   <<: *global

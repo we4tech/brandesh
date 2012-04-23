@@ -1,12 +1,11 @@
+%h2 Brand Details
+%hr/
 %fieldset
-  %legend
-    Brand Details
-
   = f.label :brand
-  = f.text_field :brand
+  = f.text_field :brand, :class => 'input span6', :placeholder => "Brand Name"
 
   = f.label :brand_manager
-  = f.text_field :brand_manager
+  = f.text_field :brand_manager, :class => 'input span6', :placeholder => "Brand's Manager Name"
 
   = f.label :brand_details
-  = f.text_field :brand_details
+  = f.text_field :brand_details, :class => 'input span6', :placeholder => "Details about brand"

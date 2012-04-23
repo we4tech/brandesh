@@ -1,16 +1,24 @@
 !!!
 %html
   %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
     %title Brandesh
+    %meta{:content => "Few Description", :name => "description"}
+    %meta{:content => "Brandesh", :name => "author"}
+    %meta{:content => "width=device-width", :name => "viewport"}/
+
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
-    %p.notice
-      = notice
-    %p.alert
-      = alert
+    = render 'layouts/header'
+    = render 'layouts/menu'
+    = render 'layouts/footer'
+    = render 'layouts/sidebar_contents'
 
-    #wrapper
-      = yield
+:javascript
+  jQuery(function () {
+   jQuery('.tabs a:last').tab('show')
+  })

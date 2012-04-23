@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20120423051553) do
     t.string   "account_manager"
     t.string   "creative_directory"
     t.string   "art_director"
-    t.string   "copyright"
+    t.string   "copywriter"
     t.string   "illustrator"
     t.string   "photographer"
     t.string   "digital_producer"

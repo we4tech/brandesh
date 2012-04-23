@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require ../../../vendor/assets/javascripts/jqueryui/jquery-ui.min.js
+//= require ../../../vendor/assets/javascripts/modernizr/modernizr-2.5.3.min.js
+//= require ../../../vendor/assets/javascripts/modernizr/bootstrap.min.js
+//= require ../../../vendor/assets/javascripts/modernizr/plugins.js
+//= require ../../../vendor/assets/javascripts/modernizr/script.js
 //= require_tree .
 
 jQuery(document).ready(function(){

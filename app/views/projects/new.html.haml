@@ -1,27 +1,28 @@
-%h1 Project Detail
-= form_for(@project, :url => new_project_path) do |f|
-  #container
+- page_title 'Project Detail'
+%section.span10.content_section
+  %h1.visuallyhidden Project Detail
+  = form_for(@project, :url => new_project_path) do |f|
     = errors_for(@project).html_safe
-    .tabs_container
-      %ul
-        %li
-          %a{href: '#ads'} Ad Details
-        %li
-          %a{href: '#brand'} Brand
-        %li
-          %a{href: '#credit'} Credits
-        %li
-          %a{href: '#media'} Media
+    %ul.nav.nav-tabs
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#ads"} Ad Details
+      %li
+        %a{"data-toggle" => "tab", :href => "#brand"} Brand
+      %li
+        %a{"data-toggle" => "tab", :href => "#credit"} Credits
+      %li
+        %a{"data-toggle" => "tab", :href => "#media"} Media
 
+      .tab-content{:id => ""}
+        #ads.tab-pane.active
+          = render 'adverts', :f => f
+        #brand.tab-pane
+          = render 'brand', :f => f
+        #credit.tab-pane
+          = render 'credits', :f => f
+        #media.tab-pane
+          = render 'media', :f => f
 
-      #ads
-        = render 'adverts', :f => f
-      #brand
-        = render 'brand', :f => f
-      #credit
-        = render 'credits', :f => f
-      #media
-        = render 'media', :f => f
-
-
-      = f.submit 'Save Project Information'
+        %hr/
+        %fieldset
+          = f.submit 'Save Project Information', :class => 'btn btn-primary'
