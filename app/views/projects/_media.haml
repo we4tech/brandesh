@@ -3,7 +3,7 @@
     Media
 
   = f.label :media_type
-  = f.text_field :media_type
+  = f.select :media_type, ['Video', 'What else?']
 
   = f.label :published_on
   = f.text_field :published_on, :class => 'date_fields'
@@ -12,8 +12,8 @@
   = f.select :category, ['Choose one', 'Choose two']
 
   = f.label :media_filename
-  = f.text_field :media_filename
+  = f.file_field :media_filename
 
   = f.label :proof_filename
-  = f.text_field :proof_filename
+  = f.file_field :proof_filename
 

@@ -9,4 +9,12 @@ class Project < ActiveRecord::Base
   validates_presence_of :ad_title, :ad_headline, :brand, :brand_details, :media_type
   
   belongs_to :agency
+
+  has_attached_file :media
+  has_attached_file :proof
+
+  validates_attachment :media, :presence => true, :size => { :in => 0..50.megabytes}
+  validates_attachment_presence :proof
+
+
 end

@@ -16,7 +16,12 @@
 //= require_tree .
 
 jQuery(document).ready(function(){
-  $('.tabs_container').tabs();
+  $('.tabs_container').tabs({
+    selected: 0
 
-  $('.date_fields').datepicker();
+  });
+
+  $('.date_fields').datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
 })
