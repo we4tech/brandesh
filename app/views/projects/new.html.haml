@@ -1,8 +1,10 @@
 - page_title 'Project Detail'
 %section.span10.content_section
   %h1.visuallyhidden Project Detail
-  = form_for(@project, :url => new_project_path) do |f|
+
+  = form_for [current_user, @project] do |f|
     = errors_for(@project).html_safe
+
     %ul.nav.nav-tabs
       %li.active
         %a{"data-toggle" => "tab", :href => "#ads"} Ad Details
@@ -13,7 +15,7 @@
       %li
         %a{"data-toggle" => "tab", :href => "#media"} Media
 
-      .tab-content{:id => ""}
+      .tab-content
         #ads.tab-pane.active
           = render 'adverts', :f => f
         #brand.tab-pane

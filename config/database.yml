@@ -3,8 +3,9 @@ global: &global
   pool: 100
   timeout: 5000
   username: root
-  password: root
+  password: hasankhan
   host: localhost
+  socket: /Applications/MAMP/tmp/mysql/mysql.sock
 
 development:
   <<: *global

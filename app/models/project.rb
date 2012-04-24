@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
                   :brand_manager,:brand_details, :account_manager, :creative_directory,
                   :art_director, :copywriter, :illustrator, :photographer, :digital_producer,
                   :creative_developer, :creative_strategy, :sound_director,:additional_credits,
-                  :media_type, :published_on, :category, :media_filename, :proof_filename
+                  :media_type, :published_on, :category, :media, :proof
 
   validates_presence_of :ad_title, :ad_headline, :brand, :brand_details, :media_type
   
@@ -15,6 +15,5 @@ class Project < ActiveRecord::Base
 
   validates_attachment :media, :presence => true, :size => { :in => 0..50.megabytes}
   validates_attachment_presence :proof
-
 
 end

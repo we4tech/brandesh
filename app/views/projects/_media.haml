@@ -10,9 +10,9 @@
   = f.label :category
   = f.select :category, ['Choose one', 'Choose two'], :class => 'input span6'
 
-  = f.label :media_filename
-  = f.text_field :media_filename, :class => 'input span6'
+  = f.label :media
+  = f.file_field :media, :class => 'input span6'
 
-  = f.label :proof_filename
-  = f.text_field :proof_filename, :class => 'input span6'
+  = f.label :proof
+  = f.file_field :proof, :class => 'input span6'
 

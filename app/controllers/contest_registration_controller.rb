@@ -1,13 +1,15 @@
 class ContestRegistrationController < ApplicationController
   def new
     @user = User.new
+    @user.agency = Agency.new
   end
 
   def create
     @user = User.new(params[:user])
-    @user.agency = Agency.new(params[:agency])
+
     if @user.save
-      redirect_to :root
+      sign_in @user
+      redirect_to new_user_project_path(@user)
     else
       render :action => :new
     end

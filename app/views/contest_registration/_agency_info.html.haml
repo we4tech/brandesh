@@ -1,7 +1,7 @@
 %h2 Agency Information
 %hr/
 %fieldset
-  = fields_for :agency do |a|
+  = f.fields_for :agency do |a|
     %legend Agency Details
     %br/
     = a.label :name, 'Agency Name'
