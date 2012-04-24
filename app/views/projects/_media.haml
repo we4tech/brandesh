@@ -5,14 +5,14 @@
   = f.select :media_type, ['Video', 'What else?'], :class => 'input span6'
 
   = f.label :published_on
-  = f.text_field :published_on, :class => 'date_fields input span6'
+  = f.date_select :published_on, :class => 'date_fields input span6'
 
   = f.label :category
   = f.select :category, ['Choose one', 'Choose two'], :class => 'input span6'
 
-  = f.label :media
+  = f.label :media, 'Upload Media'
   = f.file_field :media, :class => 'input span6'
 
-  = f.label :proof
+  = f.label :proof, 'Upload Proof Document'
   = f.file_field :proof, :class => 'input span6'
 

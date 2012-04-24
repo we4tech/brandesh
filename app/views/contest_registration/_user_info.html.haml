@@ -2,21 +2,23 @@
 %hr/
 %fieldset
   = f.label :name, 'Submitter\'s Full Name'
-  = f.text_field :name, :class => 'input span6', :placeholder => "Submitter\'s Full Name"
+  = f.text_field :name, :class => 'input span6', :placeholder => "Enter Your Full Name"
 
-  = f.label :designation, 'Your designation in current company'
-  = f.text_field :designation, :class => 'input span6', :placeholder => "EX: Account Manager, Marketing Assistant etc..."
+  = f.label :designation, 'Your Designation in current company'
+  = f.text_field :designation, :class => 'input span6',
+                 :placeholder => "eg: Account Manager, Marketing Assistant etc..."
 
 
-  = f.label :email, 'Your email address'
-  = f.email_field :email, :class => 'input span5', :placeholder => "Email"
+  = f.label :email, 'Your Email Address'
+  = f.email_field :email, :class => 'input span5', :placeholder => "Enter your Email"
   %span.help-inline This will be your User ID
 
   = f.label :password
-  = f.password_field :password, :class => 'input span5', :placeholder => "Password"
+  = f.password_field :password, :class => 'input span5', :placeholder => "Enter your Password"
 
   = f.label :password_confirmation, 'Re-enter password'
-  = f.password_field :password_confirmation, :class => 'input span5', :placeholder => "Re-Enter Password"
-  %span.span6
-    %span.label.label-info Info
-    A confirmation email will be sent on submit
+  = f.password_field :password_confirmation, :class => 'input span5', :placeholder => "Re-Enter your Password"
+
+.alert.alert-info
+  %h4.alert-heading Notice:
+  You will receive an confirmation email after completing this step.
