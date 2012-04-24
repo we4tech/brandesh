@@ -1,18 +1,19 @@
-%h2 Advert Detail
+%h2 Advert Details
 %hr/
 %fieldset
   = f.label :ad_title, 'Advert Title'
-  = f.text_field :ad_title, :class => 'input span6', :placeholder => "Advert Title"
+  = f.text_field :ad_title, :class => 'input span6', :placeholder => "Title of you Ad"
 
   = f.label :ad_headline, 'Headline'
-  = f.text_field :ad_title, :class => 'input span6', :placeholder => "Headline"
+  = f.text_field :ad_headline, :class => 'input span6', :placeholder => "Advert Headline"
 
   = f.label :ad_description, 'Project Description'
-  = f.text_field :ad_title, :class => 'input span6', :placeholder => "Project Description"
+  = f.text_area :ad_description, :class => 'input span6', :placeholder => "Project Description...", :rows => 4
 
   = f.label :ad_rationale, 'Short Rationale'
-  = f.text_field :ad_title, :class => 'input span6', :placeholder => "Short Rationale"
+  = f.text_area :ad_rationale, :class => 'input span6', :placeholder => "Short Rationale Details...", :rows => 4
 
   = f.label :ad_consumer_insight, 'Consumer Insight'
-  = f.text_field :ad_consumer_insight, :class => 'input span6', :placeholder => "Consumer Insight"
+  = f.text_area :ad_consumer_insight, :class => 'input span6',
+                :placeholder => "Write something about the targeted consumers for the advert", :rows => 5
 
