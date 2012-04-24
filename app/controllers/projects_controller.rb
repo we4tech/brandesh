@@ -6,9 +6,10 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    raise params[:project].inspect
     @project = Project.new(params[:project])
     @project.agency_id = current_user.agency.id
+
     if @project.save
       redirect_to :root
     else

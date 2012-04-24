@@ -11,9 +11,9 @@
 
     .tab-content{:id => ""}
       #basic_info.tab-pane.active
-        = render 'user_info'
+        = render 'user_info', :f => f
       #agency_info.tab-pane
-        = render 'agency_info'
+        = render 'agency_info', :f => f
       %hr/
       %fieldset
         = f.submit 'Save Information', :class => 'btn btn-primary'
