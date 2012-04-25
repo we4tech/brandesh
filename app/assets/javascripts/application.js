@@ -27,4 +27,12 @@ jQuery(document).ready(function () {
   $('.date_fields').datepicker({
     dateFormat:'yy-mm-dd'
   });
-})
+
+  jQuery('a[tab-autoswitch]').each(function() {
+    var self = $(this);
+    self.click(function() {
+      jQuery(self.attr('href') + '_tab').tab('show');
+    });
+
+  });
+});

@@ -19,6 +19,13 @@
   = f.label :password_confirmation, 'Re-enter password'
   = f.password_field :password_confirmation, :class => 'input span5', :placeholder => "Re-Enter your Password"
 
-.alert.alert-info
-  %h4.alert-heading Notice:
+.span8.alert.alert-info.clearfix{style: "margin-left: 0px"}
+  Notice:
   You will receive an confirmation email after completing this step.
+
+%p
+
+%hr
+.clearfix
+%fieldset
+  %a.btn.btn-primary{href: '#agency_info', 'tab-autoswitch' => ''} Next Agency Information >

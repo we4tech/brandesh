@@ -29,3 +29,11 @@
     = a.label :city
     = a.text_field :city, :class => 'input span6', :placeholder => "City Name"
     %span.help-inline ex:Dhaka
+
+%p
+%hr
+.clearfix
+%fieldset
+  %a.btn.btn-warning{href: '#basic_info', 'tab-autoswitch' => ''} < User Information
+  = f.submit 'Save Information', :class => 'btn btn-primary'
+

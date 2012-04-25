@@ -1,12 +1,13 @@
 .container{:role => "main"}
   %h1.visuallyhidden Entry Registration
+
   - if current_user
     = link_to 'Logout', destroy_user_session_path, :class => 'logout pull-right', :method => :delete
   - else
     = link_to 'Login', new_user_session_path, :class => 'logout pull-right'
+
   .row.margin_top_4
     %h2.visuallyhidden Registration Form
-    / Aside
     %aside.span2{:role => "contemporary"}
       %h1.visuallyhidden User Sidebar
       %nav.sidenav
@@ -21,12 +22,20 @@
           %li
             %i.icon-calendar
             %a{:href => "#"} Schedule
-          %li
-            %i.icon-plus
-            = link_to 'New Project', new_user_project_path(current_user)
 
-    %p
-      = notice
-    %p
-      = alert
-    = yield
+          - if signed_in?
+            %li
+              %i.icon-plus
+              = link_to 'New Project', new_user_project_path(current_user)
+
+    %section.span10.content_section
+      - if notice.present?
+        %p= notice
+
+      - if alert.present?
+        %div{style: 'padding: 10px'}
+          .alert.alert-message= alert
+
+      .clearfix
+
+      = yield
