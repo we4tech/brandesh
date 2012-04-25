@@ -5,7 +5,7 @@
   = f.select :media_type, ['Video', 'What else?'], :class => 'input span6'
 
   = f.label :published_on
-  = f.date_select :published_on, :class => 'date_fields input span6'
+  = f.text_field :published_on, :class => 'date_fields input span6', :placeholder => 'Select Date'
 
   = f.label :category
   = f.select :category, ['Choose one', 'Choose two'], :class => 'input span6'

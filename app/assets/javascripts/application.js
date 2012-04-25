@@ -19,13 +19,12 @@
 //= require ../../../vendor/assets/javascripts/modernizr/script.js
 //= require_tree .
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
   $('.tabs_container').tabs({
-    selected: 0
-
+    selected:0
   });
 
   $('.date_fields').datepicker({
-    dateFormat: 'yy-mm-dd'
+    dateFormat:'yy-mm-dd'
   });
 })

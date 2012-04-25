@@ -1,6 +1,9 @@
 .container{:role => "main"}
   %h1.visuallyhidden Entry Registration
-  %a.logout.pull-right{:href => "#"} Lougout
+  - if current_user
+    = link_to 'Logout', destroy_user_session_path, :class => 'logout pull-right', :method => :delete
+  - else
+    = link_to 'Login', new_user_session_path, :class => 'logout pull-right'
   .row.margin_top_4
     %h2.visuallyhidden Registration Form
     / Aside
@@ -18,6 +21,9 @@
           %li
             %i.icon-calendar
             %a{:href => "#"} Schedule
+          %li
+            %i.icon-plus
+            = link_to 'New Project', new_user_project_path(current_user)
 
     %p
       = notice
