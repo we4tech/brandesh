@@ -4,11 +4,14 @@ gem 'rails', '3.2.3'
 
 
 #gem 'mysql2'
-gem 'pg'
-gem 'activerecord-postgresql-adapter'
 gem 'haml-rails'
 gem 'devise'
 gem 'paperclip', '~> 3.0'
+
+group :production do
+  gem 'pg'
+  #gem 'activerecord-postgresql-adapter'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
