@@ -3,7 +3,9 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.3'
 
 
-gem 'mysql2'
+#gem 'mysql2'
+gem 'pg'
+gem 'activerecord-postgresql-adapter'
 gem 'haml-rails'
 gem 'devise'
 gem 'paperclip', '~> 3.0'
