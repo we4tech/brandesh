@@ -13,8 +13,11 @@
     = csrf_meta_tags
 
   %body
-    = render 'layouts/header'
-    = render 'layouts/menu'
+    - if page_context == :full_page
+      = yield
+    - else
+      = render 'layouts/content'
+
     = render 'layouts/footer'
     = render 'layouts/sidebar_contents'
 

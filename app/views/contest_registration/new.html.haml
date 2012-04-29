@@ -1,7 +1,10 @@
 - page_title 'Contest Registration'
+
 %h1.visuallyhidden Account Information
+
 = form_for(@user, :url => contest_registration_path) do |f|
   = errors_for(@user).html_safe
+
   %ul.nav.nav-tabs
     %li.active
       %a#basic_info_tab{"data-toggle" => "tab", :href => "#basic_info"} Basic Info

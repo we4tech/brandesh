@@ -1,17 +1,39 @@
-%h2 Basic Information
+%h2
+  #{@user.user_type.to_s.humanize}
+  %small Basic Information
 %hr/
 %fieldset
-  = f.label :name, 'Submitter\'s Full Name'
+  = f.label :name, 'Full Name'
   = f.text_field :name, :class => 'input span6', :placeholder => "Enter Your Full Name"
 
   = f.label :designation, 'Your Designation in current company'
   = f.text_field :designation, :class => 'input span6',
                  :placeholder => "eg: Account Manager, Marketing Assistant etc..."
 
+  = f.label :personal_email, 'Your Personal Email Address'
+  = f.email_field :personal_email, :class => 'input span5', :placeholder => "Enter your Personal Email"
 
-  = f.label :email, 'Your Email Address'
-  = f.email_field :email, :class => 'input span5', :placeholder => "Enter your Email"
-  %span.help-inline This will be your User ID
+  %span.help-inline
+    %span.label.label-important ?
+    Optional field, you can enter if you have
+
+  = f.label :personal_phone, 'Your Personal Phone'
+  = f.phone_field :personal_phone, :class => 'input span5', :placeholder => "ie. +880713232333"
+
+  %span.help-inline
+    %span.label.label-important ?
+    Optional field, you can enter if you have
+
+  = f.label :official_phone, 'Your Official Phone'
+  = f.phone_field :official_phone, :class => 'input span5', :placeholder => "ie. +880713232333"
+
+  %hr
+  = f.label :email, 'Your Corporate Email Address'
+  = f.email_field :email, :class => 'input span5', :placeholder => "Enter your Corporate Email"
+  %span.help-inline
+    %span.label.label-important ?
+    This will be your
+    %b User ID
 
   = f.label :password
   = f.password_field :password, :class => 'input span5', :placeholder => "Enter your Password"

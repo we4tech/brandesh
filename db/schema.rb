@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424124701) do
+ActiveRecord::Schema.define(:version => 20120429050633) do
 
   create_table "agencies", :force => true do |t|
     t.integer  "user_id"
@@ -82,9 +82,14 @@ ActiveRecord::Schema.define(:version => 20120424124701) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "user_type"
+    t.string   "personal_email"
+    t.string   "personal_phone"
+    t.string   "official_phone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["user_type"], :name => "index_users_on_user_type"
 
 end

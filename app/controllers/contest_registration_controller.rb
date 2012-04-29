@@ -1,6 +1,11 @@
 class ContestRegistrationController < ApplicationController
+
+  def home
+    @page_context = :full_page
+  end
+
   def new
-    @user = User.new
+    @user        = User.new(params[:user])
     @user.agency = Agency.new
   end
 

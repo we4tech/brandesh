@@ -1,41 +1,20 @@
-.container{:role => "main"}
-  %h1.visuallyhidden Entry Registration
+%h2.visuallyhidden Registration Form
+%aside.span2{:role => "contemporary"}
+  %h1.visuallyhidden User Sidebar
+  %nav.sidenav
+    %h1.visuallyhidden User Control
+    %ul
+      %li
+        %i.icon-question-sign
+        %a{"data-toggle" => "modal", :href => "#entryHelp"} Entry Help
+      %li
+        %i.icon-info-sign
+        %a{"data-toggle" => "modal", :href => "#contestGuide"} Contest Guide
+      %li
+        %i.icon-calendar
+        %a{:href => "#"} Schedule
 
-  - if current_user
-    = link_to 'Logout', destroy_user_session_path, :class => 'logout pull-right', :method => :delete
-  - else
-    = link_to 'Login', new_user_session_path, :class => 'logout pull-right'
-
-  .row.margin_top_4
-    %h2.visuallyhidden Registration Form
-    %aside.span2{:role => "contemporary"}
-      %h1.visuallyhidden User Sidebar
-      %nav.sidenav
-        %h1.visuallyhidden User Control
-        %ul
-          %li
-            %i.icon-question-sign
-            %a{"data-toggle" => "modal", :href => "#entryHelp"} Entry Help
-          %li
-            %i.icon-info-sign
-            %a{"data-toggle" => "modal", :href => "#contestGuide"} Contest Guide
-          %li
-            %i.icon-calendar
-            %a{:href => "#"} Schedule
-
-          - if signed_in?
-            %li
-              %i.icon-plus
-              = link_to 'New Project', new_user_project_path(current_user)
-
-    %section.span10.content_section
-      - if notice.present?
-        %p= notice
-
-      - if alert.present?
-        %div{style: 'padding: 10px'}
-          .alert.alert-message= alert
-
-      .clearfix
-
-      = yield
+      - if signed_in?
+        %li
+          %i.icon-plus
+          = link_to 'New Project', new_user_project_path(current_user)

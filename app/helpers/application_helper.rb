@@ -1,4 +1,13 @@
 module ApplicationHelper
+
+  def page_context=(ctx)
+    @page_context = ctx
+  end
+
+  def page_context
+    @page_context
+  end
+
   # Taken from - http://www.emersonlackey.com/article/rails3-error-messages-for-replacement
   def errors_for(object, message=nil)
     html = ""

@@ -3,8 +3,9 @@
    ========================================================================== */
 
    /* Global Style */
-   body{ background:#fff200 url("/assets/background.png"); }
+   body{ background:#fff200 url("/assets/background.png");text-shadow: 0px 1px 1px #FFF; }
    .margin_top_4{ margin-top:4em;}
+   .margin_top_1{ margin-top:1em;}
    h1{ font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:3em; font-weight: 400; }
 
    /* Google Web Font Loader Classes */
@@ -27,21 +28,27 @@
    /* Logo Segment */
    .logo{ margin-top:1em;margin-bottom:2em; }
    /* Header Segment */
-   #header{ background:#000; border-bottom:1px solid #EEE; }
-   #header .title{ color: #FFF200; padding:2.5em 1em; display: block; }
+   #header{ }
+   #header .title{ color: #FFF200; padding:1.5em 0.5em; background:#000; display: block; text-shadow:none; }
+   #homeSelection{ }
 
    /* Content Segment */
 
     a.logout{ display: block; margin-top:10px; }
 
     /* ------ Aside ------ */
-    nav.sidenav{  }
+    nav.sidenav{ margin-top:2em;  }
     nav.sidenav ul{ list-style:none; }
     nav.sidenav ul li{  }
 
     /* -------- Content Section --------- */
     .content_section{ background:#FFF; box-shadow:0px 2px 3px #CCC; border-radius:4px 4px 6px 6px; }
     .content_section hr{ width:90%; }
+
+    .content_section h1{ padding:0.5em; }
+    .content_section p#noEntry{ padding:1em 1em 2em 1em; padding-top:1em; padding-bottom:2em; }
+    .content_section ul.thumbnails{ margin-left:0px; }
+    .content_section ul.thumbnails p { padding: 10px 0px 5px 0px; }
 
     /* Tabs Style */
     .content_section .nav{ padding-top:0em; padding-left:2em; padding-right:2em; }
