@@ -22,11 +22,11 @@ group :test do
   gem 'autotest-rails'
 end
 
-group :development do
+group :development, :ci do
   gem 'mysql2'
   gem 'capistrano'
   gem 'capistrano-ext'
-  gem 'rvm'
+  gem 'rvm-capistrano'
 end
 
 group :staging do
