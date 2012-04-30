@@ -30,7 +30,7 @@ group :development, :ci do
 end
 
 group :staging do
-  gem 'pg'
+  #gem 'pg'
 end
 
 group :production do
