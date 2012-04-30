@@ -5,8 +5,19 @@ class ContestRegistrationController < ApplicationController
   end
 
   def new
-    @user        = User.new(params[:user])
-    @user.agency = Agency.new
+    if params[:testdata]
+      case params[:testdata]
+        when 'half'
+          @user = FactoryGirl.build(:user, params[:user])
+          @user.agencies.build
+        else
+          @user          = FactoryGirl.build(:user, params[:user])
+          @user.agencies = [FactoryGirl.build(:agency)]
+      end
+    else
+      @user = User.new(params[:user])
+      @user.agencies.build
+    end
   end
 
   def create

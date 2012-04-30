@@ -16,6 +16,8 @@
           %legend Select your entry type!
           .control-group
             .controls
+              %h6
+                Only delegates have voting rights
               %select#regSelection{name: 'user[user_type]'}
                 = options_for_select(User::TYPES.map {|_t| [_t.to_s.humanize, _t]})
               %button.btn.btn-primary{type: "submit"} Go

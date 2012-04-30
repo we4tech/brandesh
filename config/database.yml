@@ -10,3 +10,7 @@ global: &global
 development:
   <<: *global
   database: brandesh_dev
+
+test:
+  <<: *global
+  database: brandesh_test

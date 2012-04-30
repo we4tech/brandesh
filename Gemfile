@@ -6,6 +6,19 @@ gem 'rails', '3.2.3'
 gem 'haml-rails'
 gem 'devise'
 gem 'paperclip', '~> 3.0'
+gem 'factory_girl'
+gem 'factory_girl_rails'
+
+group :test do
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
+  gem 'rspec-rails'
+  gem 'rspec-core'
+  gem 'rspec2-rails-views-matchers'
+  gem 'shoulda-matchers'
+  gem 'ZenTest'
+  gem 'autotest-rails'
+end
 
 group :development do
   gem 'mysql2'

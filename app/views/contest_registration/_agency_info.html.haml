@@ -1,34 +1,60 @@
 %h2 Agency Information
 %hr/
-%fieldset
-  = f.fields_for :agency do |a|
-    %legend Agency Details
+.well.span7
+  %fieldset
+    %legend Search existing agency record
     %br/
-    = a.label :name, 'Agency Name'
-    = a.text_field :name, :class => 'input span6', :placeholder => "Name of Your Agency"
+    .remote-form.form-search{:url => search_agency_path, 'onError' => 'RemoteForm_onError', 'onData' => 'RemoteForm_onData'}
+      .notice{style: 'display:none'}
 
-    = a.label :website, 'Agency Website'
-    = a.url_field :website, :class => 'input span6', :placeholder => "http://"
+      %input{type: 'search', :placeholder => 'Enter Existing Agency Name',
+             name: 'name', class: 'validation-required input-medium search-query span5'}
+      %input{type: 'button', value: 'Search', class: "btn btn-inverse submit"}
 
-    = a.label :email, 'Agency Email Address'
-    = a.email_field :email, :class => 'input span6', :placeholder => "Agency Email Address"
+.clearfix
 
-    = a.label :phone, 'Agency Phone'
-    = a.phone_field :phone, :class => 'input span6', :placeholder => "Agency Phone"
+#agency_selection_info.row.span7
+  - f.object.agencies.select{|a| a unless a.new_record? }.each do |agency|
+    %fieldset.alert.alert-success
+      %a.close{'data-dismiss' => 'alert', href: '#'} ×
+      %h5
+        You are associated with
+        %strong
+          `#{agency.name}`
+      %input{type: 'hidden', name: 'user[agency_ids][]', value: agency.id}
 
-    %hr/
-    %legend Agency Address Information
-    = a.label :street, 'Street Address'
-    = a.text_field :street, :class => 'input span6', :placeholder => "Enter Road,Street,Block name or number"
-    %span.help-inline ex:House-157,Block-D,Shahid Sayem Road
+.clearfix
+#agency-form-placeholder
+#agency_form{style: "display:#{f.object.found_new_agency_with_value? ? 'block' : 'none'}"}
+  %fieldset
+    = f.fields_for :agencies do |a|
+      %legend Agency Details
+      %br/
+      = a.label :name, 'Agency Name'
+      = a.text_field :name, :class => 'input span6', :placeholder => "Name of Your Agency"
 
-    = a.label :area
-    = a.text_field :area, :class => 'input span6', :placeholder => "Area Name"
-    %span.help-inline ex:Bashundhara R/A
+      = a.label :website, 'Agency Website'
+      = a.url_field :website, :class => 'input span6', :placeholder => "http://"
 
-    = a.label :city
-    = a.text_field :city, :class => 'input span6', :placeholder => "City Name"
-    %span.help-inline ex:Dhaka
+      = a.label :email, 'Agency Email Address'
+      = a.email_field :email, :class => 'input span6', :placeholder => "Agency Email Address"
+
+      = a.label :phone, 'Agency Phone'
+      = a.phone_field :phone, :class => 'input span6', :placeholder => "Agency Phone"
+
+      %hr/
+      %legend Agency Address Information
+      = a.label :street, 'Street Address'
+      = a.text_field :street, :class => 'input span6', :placeholder => "Enter Road,Street,Block name or number"
+      %span.help-inline ex:House-157,Block-D,Shahid Sayem Road
+
+      = a.label :area
+      = a.text_field :area, :class => 'input span6', :placeholder => "Area Name"
+      %span.help-inline ex:Bashundhara R/A
+
+      = a.label :city
+      = a.text_field :city, :class => 'input span6', :placeholder => "City Name"
+      %span.help-inline ex:Dhaka
 
 %p
 %hr

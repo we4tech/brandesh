@@ -2,6 +2,10 @@
   #{@user.user_type.to_s.humanize}
   %small Basic Information
 %hr/
+
+.hidden_fields{style: 'display:none'}
+  = f.hidden_field :user_type
+
 %fieldset
   = f.label :name, 'Full Name'
   = f.text_field :name, :class => 'input span6', :placeholder => "Enter Your Full Name"

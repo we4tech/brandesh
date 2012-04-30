@@ -35,4 +35,57 @@ jQuery(document).ready(function () {
     });
 
   });
+
+  jQuery('.remote-form').remoteForm();
+
+  jQuery('#new_user').bind('submit', function() {
+    if ('none' == $('#agency_form').css('display')) {
+      $('#agency_form').remove();
+    }
+  });
 });
+
+// Register Remote form on error related handlers
+function RemoteForm_onError($el, msg) {
+  $el.find('.notice').html(
+      "<div class='alert alter-warning'>" + msg +
+          "<button type='button' class='close' data-dismiss='alert'>×</button>" +
+          '</div>');
+  $el.find('.notice').show();
+}
+
+function _log(msg) {
+  if ('undefined' != typeof(console)) {
+    console.log(msg);
+  }
+}
+
+// Register remote form data receiving related handler
+function RemoteForm_onData($el, json) {
+  _log(json);
+
+  if (json && json.length > 0) {
+    var agency = json[0];
+
+    if (confirm('Do you want to be enlisted under `' + agency.name + '` ?')) {
+      var html = "<fieldset class='alert alert-success'>" +
+          "<a class='close' data-dismiss='alert' href='#'>×</a>" +
+          "<h5>" +
+          "You are associated with <b>`" + agency.name + "`</b>" +
+          "<input type='hidden' name='user[agency_ids][]' " +
+          "value='" + agency.id + "'/>" +
+          "</h5></fieldset>";
+
+      _log(html);
+      $('#agency_selection_info').html(html);
+      $('#agency_form').hide();
+    }
+  } else {
+    if (confirm("Sorry couldn't find an existing record.\nDo you want to create new ?")) {
+      //$('#agency_form').withInForm($('#agency-form-placeholder'));
+      $('#agency_form').show();
+      $('#agency_selection_info').html('');
+      window.location = window.location.href.split('#')[0] + '#agency_form';
+    }
+  }
+}
