@@ -3,6 +3,7 @@
     %h2 #{k} Credits
     %hr/
     %fieldset
+      - f.object.credits_hash ||= {}
       - fields.each do |field|
         = f.label field
         %input.input.span6{type: 'text', name: "project[credits_hash][#{field}]",
@@ -18,4 +19,4 @@
 %hr/
 %fieldset
   %a.btn.btn-inverse{href: '#brand', 'tab-autoswitch' => ''} < Brand Details
-  = f.submit 'Save Project Information', :class => 'btn btn-primary'
+  = f.submit 'Save Entry', :class => 'btn btn-primary'

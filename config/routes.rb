@@ -2,6 +2,7 @@ Brandesh::Application.routes.draw do
   devise_for :users
 
   root :to => "contest_registration#home"
+  get '/static/:page_name', :to => 'static_page#serve', :as => 'static_page'
 
   scope '/contest' do
     get 'join', :to => 'contest_registration#new', :as => 'join_contest_registration'

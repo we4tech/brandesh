@@ -1,8 +1,12 @@
-- page_title 'All Projects'
+- page_title 'All Entries'
 
-%h1.visuallyhidden All Projects
+%h1.visuallyhidden All Entries
 
 .span10
+  %br/
+  .btn-group{style: 'margin-left: 20px'}
+    = link_to 'Add New Entry', new_user_project_path(current_user), :class => 'btn btn-primary'
+  .clearfix
   %br/
 
   - @projects.each do |project|

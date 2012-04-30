@@ -2,108 +2,316 @@
    Author: Shajed Evan
    ========================================================================== */
 
-   /* Global Style */
-   body{ background:#fff200 url("/assets/background.png");text-shadow: 0px 1px 1px #FFF; }
-   .margin_top_4{ margin-top:4em;}
-   .margin_top_1{ margin-top:1em;}
-   h1{ font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:3em; font-weight: 400; }
+/* Global Style */
+body {
+  background: #fff200 url("/assets/background.png");
+  text-shadow: 0px 1px 1px #FFF;
+}
 
-   /* Google Web Font Loader Classes */
-   .wf-loading h1 { visibility:hidden; }
-   .wf-inactive h1{ visibility:visible;}
-   .wf-active h1 {font-family: 'Bree Serif', serif;}
+.margin_top_4 {
+  margin-top: 4em;
+}
 
-   /* Sprite */
+.margin_top_1 {
+  margin-top: 1em;
+}
 
-   .living_ideas, .ad_club, .digital_media_marketing, .brandesh
-{ display: block; background: url('/assets/DMSpritev2.png') no-repeat; text-indent:-9999px; }
+h1 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 3em;
+  font-weight: 400;
+}
 
-.living_ideas { background-position: -0px -0px; width: 295px; height: 177px; }
-.ad_club { background-position: -0px -177px; width: 98px; height: 127px; margin-top:30px; }
-.digital_media_marketing { background-position: -98px -177px; width: 176px; height: 59px; margin-top:45px; }
-.brandesh { background-position: -0px -304px; width: 217px; height: 53px; }
+/* Google Web Font Loader Classes */
+.wf-loading h1 {
+  visibility: hidden;
+}
 
-      
+.wf-inactive h1 {
+  visibility: visible;
+}
 
-   /* Logo Segment */
-   .logo{ margin-top:1em;margin-bottom:2em; }
-   /* Header Segment */
-   #header{ }
-   #header .title{ color: #FFF200; padding:1.5em 0.5em; background:#000; display: block; text-shadow:none; }
-   #homeSelection{ }
+.wf-active h1 {
+  font-family: 'Bree Serif', serif;
+}
 
-   /* Content Segment */
+/* Sprite */
 
-    a.logout{ display: block; margin-top:10px; }
+.living_ideas, .ad_club, .digital_media_marketing, .brandesh {
+  display: block;
+  background: url('/assets/DMSpritev2.png') no-repeat;
+  text-indent: -9999px;
+}
 
-    /* ------ Aside ------ */
-    nav.sidenav{ margin-top:2em;  }
-    nav.sidenav ul{ list-style:none; }
-    nav.sidenav ul li{  }
+.living_ideas {
+  background-position: -0px -0px;
+  width: 295px;
+  height: 177px;
+}
 
-    /* -------- Content Section --------- */
-    .content_section{ background:#FFF; box-shadow:0px 2px 3px #CCC; border-radius:4px 4px 6px 6px; }
-    .content_section hr{ width:90%; }
+.ad_club {
+  background-position: -0px -177px;
+  width: 98px;
+  height: 127px;
+  margin-top: 30px;
+}
 
-    .content_section h1{ padding:0.5em; }
-    .content_section p#noEntry{ padding:1em 1em 2em 1em; padding-top:1em; padding-bottom:2em; }
-    .content_section ul.thumbnails{ margin-left:0px; }
-    .content_section ul.thumbnails p { padding: 10px 0px 5px 0px; }
+.digital_media_marketing {
+  background-position: -98px -177px;
+  width: 176px;
+  height: 59px;
+  margin-top: 45px;
+}
 
-    /* Tabs Style */
-    .content_section .nav{ padding-top:0em; padding-left:2em; padding-right:2em; }
+.brandesh {
+  background-position: -0px -304px;
+  width: 217px;
+  height: 53px;
+}
 
-    .nav-tabs{ border:0; }
-    .nav-tabs > li > a {
-        border: 1px solid transparent;
-        border-radius: 0 0 4px 4px;
-        line-height: 18px;
-        padding-bottom: 8px;
-        padding-top: 8px;
-    }
-    .content_section .tab-content{ padding:0em 2em 2em; }
+/* Logo Segment */
+.logo {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
 
-    
+/* Header Segment */
+#header {
+}
 
-    .nav-tabs > .active > a, .nav-tabs > .active > a:hover { color: #111; font-weight:bold; background: #FFF200 url('/assets/background.png'); border: 1px solid #CCC; border-top-color: transparent;}
+#header .title {
+  color: #FFF200;
+  padding: 1.5em 0.5em;
+  background: #000;
+  display: block;
+  text-shadow: none;
+  line-height: 40px;
+  font-weight: normal;
+}
 
-  /* Footer Segment */
-  .footer{ margin-top:3em; margin-bottom:1em; border-top:1px solid #999; padding-top:2em; }
-  .credit{ margin-top:60px; }
+#homeSelection {
+}
 
+/* Content Segment */
 
+a.logout {
+  display: block;
+  margin-top: 10px;
+}
 
+/* ------ Aside ------ */
+nav.sidenav {
+  margin-top: 2em;
+}
+
+nav.sidenav ul {
+  list-style: none;
+}
+
+nav.sidenav ul li {
+}
+
+/* -------- Content Section --------- */
+.content_section {
+  background: #FFF;
+  box-shadow: 0px 2px 3px #CCC;
+  border-radius: 4px 4px 6px 6px;
+}
+
+.content_section hr {
+  width: 90%;
+}
+
+.content_section h1 {
+  padding: 0.5em;
+}
+
+.content_section p#noEntry {
+  padding: 1em 1em 2em 1em;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+.content_section ul.thumbnails {
+  margin-left: 0px;
+}
+
+.content_section ul.thumbnails p {
+  padding: 10px 0px 5px 0px;
+}
+
+/* Tabs Style */
+.content_section .nav {
+  padding-top: 0em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.nav-tabs {
+  border: 0;
+}
+
+.nav-tabs > li > a {
+  border: 1px solid transparent;
+  border-radius: 0 0 4px 4px;
+  line-height: 18px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.content_section .tab-content {
+  padding: 0em 2em 2em;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+  color: #111;
+  font-weight: bold;
+  background: #FFF200 url('/assets/background.png');
+  border: 1px solid #CCC;
+  border-top-color: transparent;
+}
+
+/* Footer Segment */
+.footer {
+  margin-top: 3em;
+  margin-bottom: 1em;
+  border-top: 1px solid #999;
+  padding-top: 2em;
+}
+
+.credit {
+  margin-top: 60px;
+}
 
 /* =============================================================================
-   Non-Semantic Helper Classes
-   ========================================================================== */
+Non-Semantic Helper Classes
+========================================================================== */
 
-.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
-.ir br { display: none; }
-.hidden { display: none !important; visibility: hidden; }
-.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
-.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
-.invisible { visibility: hidden; }
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { *zoom: 1; }
-.chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
+.ir {
+  display: block;
+  border: 0;
+  text-indent: -999em;
+  overflow: hidden;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+  *line-height: 0;
+}
+
+.ir br {
+  display: none;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.chromeframe {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: black;
+  padding: 0.2em 0;
+}
 
 /* =============================================================================
    Print Styles
    ========================================================================== */
- 
+
 @media print {
-  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
-  a, a:visited { text-decoration: underline; }
-  a[href]:after { content: " (" attr(href) ")"; }
-  abbr[title]:after { content: " (" attr(title) ")"; }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; } /* h5bp.com/t */
-  tr, img { page-break-inside: avoid; }
-  img { max-width: 100% !important; }
-  @page { margin: 0.5cm; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3 { page-break-after: avoid; }
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* Black prints faster: h5bp.com/s */
+  a, a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  /* Don't show links for images, or javascript/internal links */
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  /* h5bp.com/t */
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2, h3 {
+    page-break-after: avoid;
+  }
 }

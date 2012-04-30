@@ -6,15 +6,18 @@
     %ul
       %li
         %i.icon-question-sign
-        %a{"data-toggle" => "modal", :href => "#entryHelp"} Entry Help
+        = link_to 'Entry Help', static_page_path('help')
       %li
         %i.icon-info-sign
-        %a{"data-toggle" => "modal", :href => "#contestGuide"} Contest Guide
+        = link_to 'Entry Rules', static_page_path('rules')
       %li
         %i.icon-calendar
-        %a{:href => "#"} Schedule
+        = link_to 'Schedule', static_page_path('schedule')
 
       - if signed_in?
         %li
+          %i.icon-list
+          = link_to 'All Entries', user_projects_path(current_user)
+        %li
           %i.icon-plus
-          = link_to 'New Project', new_user_project_path(current_user)
+          = link_to 'New Entry', new_user_project_path(current_user)
