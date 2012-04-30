@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430060205) do
+ActiveRecord::Schema.define(:version => 20120430111723) do
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(:version => 20120430060205) do
     t.integer "user_id"
   end
 
+  create_table "categories", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "categories", ["name"], :name => "index_categories_on_name"
+  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+
   create_table "projects", :force => true do |t|
     t.integer  "agency_id"
     t.string   "ad_title"
@@ -40,20 +51,8 @@ ActiveRecord::Schema.define(:version => 20120430060205) do
     t.string   "brand"
     t.string   "brand_manager"
     t.text     "brand_details"
-    t.string   "account_manager"
-    t.string   "creative_directory"
-    t.string   "art_director"
-    t.string   "copywriter"
-    t.string   "illustrator"
-    t.string   "photographer"
-    t.string   "digital_producer"
-    t.string   "creative_developer"
-    t.string   "creative_strategy"
-    t.string   "sound_director"
     t.text     "additional_credits"
-    t.string   "media_type"
     t.date     "published_on"
-    t.string   "category"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "media_file_name"
@@ -65,6 +64,9 @@ ActiveRecord::Schema.define(:version => 20120430060205) do
     t.integer  "proof_file_size"
     t.datetime "proof_updated_at"
     t.text     "ad_rationale"
+    t.integer  "category_id"
+    t.integer  "media_type_id"
+    t.text     "credits_hash"
   end
 
   create_table "users", :force => true do |t|

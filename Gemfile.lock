@@ -29,6 +29,11 @@ GEM
     activesupport (3.2.3)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    acts_as_kaltura (1.2.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      jeweler
+      velir_kaltura-ruby
     arel (3.0.2)
     autotest-fsevent (0.2.8)
       sys-uname
@@ -61,6 +66,7 @@ GEM
       factory_girl (~> 3.2.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
+    git (1.2.5)
     haml (3.1.4)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -69,6 +75,11 @@ GEM
       railties (~> 3.0)
     hike (1.2.1)
     i18n (0.6.0)
+    jeweler (1.8.3)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+      rdoc
     journey (1.0.3)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -119,6 +130,8 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -158,6 +171,11 @@ GEM
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    velir_kaltura-ruby (0.4.13)
+      activeresource (>= 2.3.8)
+      activesupport (>= 2.3.8)
+      json
+      rest-client (>= 1.5.1)
     warden (1.1.1)
       rack (>= 1.0)
 
@@ -167,6 +185,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  acts_as_kaltura (>= 1.2.1)
   autotest-fsevent
   autotest-growl
   autotest-rails
@@ -186,3 +205,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda-matchers
   uglifier (>= 1.0.3)
+  velir_kaltura-ruby

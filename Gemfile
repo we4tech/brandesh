@@ -8,6 +8,8 @@ gem 'devise'
 gem 'paperclip', '~> 3.0'
 gem 'factory_girl'
 gem 'factory_girl_rails'
+gem "velir_kaltura-ruby", :require => "kaltura"
+gem 'acts_as_kaltura', '>= 1.2.1'
 
 group :test do
   gem 'autotest-growl'

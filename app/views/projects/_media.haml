@@ -1,14 +1,17 @@
 %h2 Media
 %hr/
 %fieldset
-  = f.label :media_type
-  = f.select :media_type, ['Video', 'What else?'], :class => 'input span6'
+  = f.label :media_type_id
+  = f.select :media_type_id, @root_media.categories.map{ |c| [c.name, c.id] }, :class => 'input span6'
 
   = f.label :published_on
   = f.text_field :published_on, :class => 'date_fields input span6', :placeholder => 'Select Date'
 
-  = f.label :category
-  = f.select :category, ['Choose one', 'Choose two'], :class => 'input span6'
+  = f.label :category_id
+  = f.select :category_id, @root_category.categories.map{ |c| [c.name, c.id] }, :class => 'input span6'
+
+  .well
+    #category-description= @root_category.categories.first.description
 
   = f.label :media, 'Upload Media'
   = f.file_field :media, :class => 'input span6'
@@ -16,3 +19,10 @@
   = f.label :proof, 'Upload Proof Document'
   = f.file_field :proof, :class => 'input span6'
 
+%hr/
+%fieldset
+  %a.btn.btn-primary{href: '#ads', 'tab-autoswitch' => ''} Next Ad Details >
+
+- content_for :bottom do
+  :javascript
+    categoriesDescription = [#{@root_category.categories.map{|c| "\"#{escape_javascript(c.description)}\""}.join(', ')}];

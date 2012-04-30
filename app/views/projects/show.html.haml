@@ -1,0 +1,79 @@
+- page_title @project.ad_title
+
+%section.span10
+  %br/
+  %h1
+    = @project.ad_title
+    %small= @project.ad_headline
+
+    .btn-group
+      = link_to 'Link', user_project_path(current_user, @project), :class => 'btn'
+      = link_to 'Edit', edit_user_project_path(current_user, @project), :class => 'btn'
+      = link_to 'Delete', user_project_path(current_user, @project), :class => 'btn btn-danger',
+                :method => :delete, :confirm => 'Do you want to remove this project?'
+
+  .span8
+    %table.table.table-bordered.table-striped{width: '400px'}
+      %tbody
+        %tr
+          %th Media Type
+          %td= @project.media_type.name
+
+        %tr
+          %th Published On
+          %td= @project.published_on
+
+        %tr
+          %th Category
+          %td
+            = @project.category.name
+            %p{style: 'color: #888'}= @project.category.description
+
+        %tr
+          %th Proof Document
+          %td= link_to 'Download', @project.proof.url
+
+        %tr
+          %th Media
+          %td= link_to 'Download', @project.media.url
+
+  .span8.well
+    %h3 Ad Description
+    %p= @project.ad_description
+
+  .span8.well
+    %h3 Ad Rationale
+    %p= @project.ad_rationale
+
+  .span8.well
+    %h3 Ad Consumer Insight
+    %p= @project.ad_consumer_insight
+
+  .span8.brand-info
+    %h3 Brand Information
+    %hr/
+    %table.table.table-bordered.table-striped
+      %tbody
+        %tr
+          %th brand
+          %td= @project.brand
+
+        %tr
+          %th Brand Manager
+          %td= @project.brand_manager
+
+        %tr
+          %th Brand Details
+          %td= @project.brand_details
+
+  .span8.credits-info
+    %h3 Credits
+    %hr/
+
+    %table.table.table-bordered.table-striped
+      %tbody
+        - @project.credits_hash.each do |k, v|
+          - if v.present?
+            %tr
+              %th= k
+              %td= v

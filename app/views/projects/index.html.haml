@@ -1,0 +1,9 @@
+- page_title 'All Projects'
+
+%h1.visuallyhidden All Projects
+
+.span10
+  %br/
+
+  - @projects.each do |project|
+    = render project

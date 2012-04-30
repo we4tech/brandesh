@@ -1,13 +1,21 @@
-%h2 Credits
+- Project::CREDIT_FIELDS.each do |k, fields|
+  %div.credits_panel{id: "credits_#{k.parameterize}", style: "display:none"}
+    %h2 #{k} Credits
+    %hr/
+    %fieldset
+      - fields.each do |field|
+        = f.label field
+        %input.input.span6{type: 'text', name: "project[credits_hash][#{field}]",
+                          value: f.object.credits_hash[field],
+                          :placeholder => "Enter name of #{field.to_s.humanize}"}
+
+      = f.label :additional_credits
+      = f.text_area :additional_credits, :class => 'input span6',
+                    :placeholder => "Additional Credits", :rows => 6
+
+
+
 %hr/
 %fieldset
-  - [:account_manager, :creative_directory, :art_director, :copywriter,
-     :illustrator, :photographer, :digital_producer, :creative_developer,
-     :creative_strategy, :sound_director].each do |field|
-    = f.label field
-    = f.text_field field, :class => 'input span6', :placeholder => "Enter name of #{field.to_s.humanize}"
-
-  = f.label :additional_credits
-  = f.text_area :additional_credits, :class => 'input span6',
-                :placeholder => "Additional Credits", :rows => 6
-
+  %a.btn.btn-inverse{href: '#brand', 'tab-autoswitch' => ''} < Brand Details
+  = f.submit 'Save Project Information', :class => 'btn btn-primary'

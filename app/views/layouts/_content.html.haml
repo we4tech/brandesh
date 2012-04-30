@@ -13,7 +13,8 @@
 
     %section.span10.content_section
       - if notice.present?
-        %p= notice
+        %div{style: 'padding: 10px'}
+          .alert.alert-success= notice
 
       - if alert.present?
         %div{style: 'padding: 10px'}

@@ -1,0 +1,16 @@
+.well.span8
+  .span8
+    .row
+      %h3
+        = project.ad_title
+        %small= project.ad_headline
+      %p= truncate(project.ad_description, :length => 120)
+
+    .row
+      .btn-group
+        = link_to 'Show', user_project_path(current_user, project), :class => 'btn'
+        = link_to 'Edit', edit_user_project_path(current_user, project), :class => 'btn'
+        = link_to 'Delete', user_project_path(current_user, project), :class => 'btn btn-danger',
+                  :method => :delete, :confirm => 'Do you want to remove this project?'
+
+.clearfix

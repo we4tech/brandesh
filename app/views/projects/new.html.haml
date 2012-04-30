@@ -3,28 +3,26 @@
 %h1.visuallyhidden Project Details
 
 = form_for [current_user, @project] do |f|
-  = errors_for(@project).html_safe
-
   %ul.nav.nav-tabs
     %li.active
-      %a{"data-toggle" => "tab", :href => "#ads"} Ad Details
+      %a#media_tab{"data-toggle" => "tab", :href => "#media"} Media
     %li
-      %a{"data-toggle" => "tab", :href => "#brand"} Brand
+      %a#ads_tab{"data-toggle" => "tab", :href => "#ads"} Ad Details
     %li
-      %a{"data-toggle" => "tab", :href => "#credit"} Credits
+      %a#brand_tab{"data-toggle" => "tab", :href => "#brand"} Brand
     %li
-      %a{"data-toggle" => "tab", :href => "#media"} Media
+      %a#credit_tab{"data-toggle" => "tab", :href => "#credit"} Credits
+
+    %p.clearfix
+    = errors_for(@project).html_safe
 
     .tab-content
-      #ads.tab-pane.active
+      #media.tab-pane.active
+        = render 'media', :f => f
+      #ads.tab-pane
         = render 'adverts', :f => f
       #brand.tab-pane
         = render 'brand', :f => f
       #credit.tab-pane
         = render 'credits', :f => f
-      #media.tab-pane
-        = render 'media', :f => f
 
-      %hr/
-      %fieldset
-        = f.submit 'Save Project Information', :class => 'btn btn-primary'

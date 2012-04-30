@@ -21,16 +21,16 @@
 
 jQuery(document).ready(function () {
   $('.tabs_container').tabs({
-    selected:0
+    selected: 0
   });
 
   $('.date_fields').datepicker({
-    dateFormat:'yy-mm-dd'
+    dateFormat: 'yy-mm-dd'
   });
 
-  jQuery('a[tab-autoswitch]').each(function() {
+  jQuery('a[tab-autoswitch]').each(function () {
     var self = $(this);
-    self.click(function() {
+    self.click(function () {
       jQuery(self.attr('href') + '_tab').tab('show');
     });
 
@@ -38,10 +38,42 @@ jQuery(document).ready(function () {
 
   jQuery('.remote-form').remoteForm();
 
-  jQuery('#new_user').bind('submit', function() {
+  // Bind submit event for agency form
+  jQuery('#new_user').bind('submit', function () {
     if ('none' == $('#agency_form').css('display')) {
       $('#agency_form').remove();
     }
+  });
+
+  // Show description when category is selected
+  jQuery('#project_category_id').bind('change', function (e) {
+    try {
+      $('#category-description').html(categoriesDescription[e.currentTarget.selectedIndex]);
+    } catch (e) {
+      alert(e);
+    }
+  });
+
+  // Load initial description
+  $('#category-description').html(categoriesDescription[jQuery('#project_category_id')[0].selectedIndex]);
+
+  // Choose credits based on media type
+  $('#project_media_type_id').bind('change', function(e) {
+    $('.credits_panel').hide();
+    $($('.credits_panel')[e.currentTarget.selectedIndex]).show();
+  });
+
+  // Load default credits
+  $($('.credits_panel')[$('#project_media_type_id')[0].selectedIndex]).show();
+
+  // Remove unused credits during submission
+  $('#new_project, #edit_project').bind('submit', function() {
+    $('.credits_panel').each(function() {
+      var $el = $(this);
+      if ($el.css('display') == 'none') {
+        $el.remove();
+      }
+    });
   });
 });
 

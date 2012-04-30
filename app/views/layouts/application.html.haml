@@ -21,6 +21,8 @@
     = render 'layouts/footer'
     = render 'layouts/sidebar_contents'
 
+    = yield :bottom
+
 :javascript
   jQuery(function () {
    jQuery('.tabs a:last').tab('show')
