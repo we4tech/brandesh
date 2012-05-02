@@ -1,4 +1,12 @@
-- page_title 'Registration'
+:ruby
+  page_title 'Registration'
+  lbl_agency_info = case @user.user_type
+    when 'brand_executive' then 'Corporate Info'
+    when 'student' then 'Institution Info'
+    else
+      'Agency Info'
+  end
+
 
 %h1.visuallyhidden Account Information
 
@@ -7,7 +15,8 @@
     %li.active
       %a#basic_info_tab{"data-toggle" => "tab", :href => "#basic_info"} Basic Info
     %li
-      %a#agency_info_tab{"data-toggle" => "tab", :href => "#agency_info"} Agency Info
+      %a#agency_info_tab{"data-toggle" => "tab", :href => "#agency_info"}
+        = lbl_agency_info
 
   = errors_for(@user).html_safe
 

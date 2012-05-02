@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430111723) do
+ActiveRecord::Schema.define(:version => 20120502170426) do
 
   create_table "agencies", :force => true do |t|
     t.string   "name"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20120430111723) do
     t.text     "brand_details"
     t.text     "additional_credits"
     t.date     "published_on"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "media_file_name"
     t.string   "media_content_type"
     t.integer  "media_file_size"
@@ -67,15 +67,17 @@ ActiveRecord::Schema.define(:version => 20120430111723) do
     t.integer  "category_id"
     t.integer  "media_type_id"
     t.text     "credits_hash"
+    t.string   "status",              :default => "pending"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "designation"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -89,9 +91,10 @@ ActiveRecord::Schema.define(:version => 20120430111723) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "user_type"
-    t.string   "personal_email"
+    t.string   "corporate_email"
     t.string   "personal_phone"
     t.string   "official_phone"
+    t.boolean  "admin",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

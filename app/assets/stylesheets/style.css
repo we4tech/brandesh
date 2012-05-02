@@ -36,35 +36,38 @@ h1 {
 }
 
 /* Sprite */
-
-.living_ideas, .ad_club, .digital_media_marketing, .brandesh {
+.adfest, .livingideas, .adclub, .digitalmediamarketing, .brandesh {
   display: block;
-  background: url('/assets/DMSpritev2.png') no-repeat;
+  background: url('/assets/DMSpritev3.png') no-repeat;
   text-indent: -9999px;
 }
 
-.living_ideas {
+.adfest {
   background-position: -0px -0px;
-  width: 295px;
-  height: 177px;
+  width: 134px;
+  height: 133px;
 }
 
-.ad_club {
-  background-position: -0px -177px;
-  width: 98px;
-  height: 127px;
-  margin-top: 30px;
+.livingideas {
+  background-position: -0px -133px;
+  width: 166px;
+  height: 131px;
 }
 
-.digital_media_marketing {
-  background-position: -98px -177px;
+.adclub {
+  background-position: -0px -264px;
+  width: 88px;
+  height: 114px;
+}
+
+.digitalmediamarketing {
+  background-position: -0px -378px;
   width: 176px;
   height: 59px;
-  margin-top: 45px;
 }
 
 .brandesh {
-  background-position: -0px -304px;
+  background-position: -0px -437px;
   width: 217px;
   height: 53px;
 }

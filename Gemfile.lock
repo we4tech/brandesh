@@ -43,6 +43,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.0)
+    cancan (1.6.7)
     capistrano (2.12.0)
       highline
       net-scp (>= 1.0.0)
@@ -205,6 +206,7 @@ DEPENDENCIES
   autotest-fsevent
   autotest-growl
   autotest-rails
+  cancan
   capistrano
   capistrano-ext
   coffee-rails (~> 3.2.1)

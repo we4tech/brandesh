@@ -1,13 +1,14 @@
-- page_title 'All Entries'
-
-%h1.visuallyhidden All Entries
-
 .span10
   %br/
-  .btn-group{style: 'margin-left: 20px'}
-    = link_to 'Add New Entry', new_user_project_path(current_user), :class => 'btn btn-primary'
-  .clearfix
+  - if can? :create, Project
+    .btn-group{style: 'margin-left: 20px'}
+      = link_to 'Add New Entry', new_user_project_path(current_user), :class => 'btn btn-primary'
+    .clearfix
   %br/
 
-  - @projects.each do |project|
-    = render project
+  - if @projects.present?
+    - @projects.each do |project|
+      = render project
+  - else
+    .well.span8
+      %h4= "#{@page_title} Not Found"

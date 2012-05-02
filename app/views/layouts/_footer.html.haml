@@ -1,10 +1,26 @@
 %footer.container.footer
   .row
     .span9
-      %span.living_ideas.span4 Living Ideas
-      %span.ad_club.span2 Ad Club
-      %span.digital_media_marketing.span2 Digital Media marketing
+      %span.adfest.span2 Ad Fest
+      %span.livingideas.span3 Living Ideas
+      %span.adclub.span2 Ad Club
     .span3
-      %p.credit
-        Designed by:
-        %a{:href => "http://twitter.com/evanshajed", :title => "Shajed Evan"} Shajed Evan.
+      %a{'data-toggle' => "modal", href: "#credits"}
+        %span.digitalmediamarketing Digital Marketing Media
+
+/ Credits Modal
+.modal.hide.fade.in#credits
+  .modal-header
+    %a.close{'data-dismiss' => "modal"} ×
+    %h3 Credits
+  .modal-body
+    %p.credit
+      Crafted by:
+      %ul
+        %li= link_to 'Shajed Evan', "http://twitter.com/evanshajed", title: "Shajed Evan"
+        %li
+          %a{href: '#'} IDEABase Ruby Development Team
+
+  .modal-footer
+    %a.btn{href: "#", 'data-dismiss' => "modal"} Close
+    %a.btn.btn-primary{href: "#"} Download Help File

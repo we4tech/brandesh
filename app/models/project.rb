@@ -8,6 +8,7 @@ class Project < ActiveRecord::Base
 
   belongs_to :agency
   belongs_to :category
+  belongs_to :user
   belongs_to :media_type, :foreign_key => 'media_type_id', :class_name => 'Category'
 
   has_attached_file :media
@@ -16,6 +17,16 @@ class Project < ActiveRecord::Base
   validates_attachment :media, :presence => true, :size => { :in => 0..50.megabytes }
   validates_attachment_presence :proof
   serialize :credits_hash
+
+  STATUS = [:pending, :approved, :rejected]
+
+  STATUS.each do |s|
+    self.send :define_method, :"#{s}?", lambda { s.to_s == status.to_s }
+    self.send :define_method, :"#{s}!", lambda { update_attribute :status, s }
+    self.send :scope, :"#{s}", where(status: s)
+  end
+
+  scope :recent, order("created_at DESC")
 
   CREDIT_FIELDS = {
       'TV'        => [

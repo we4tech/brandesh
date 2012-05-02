@@ -1,13 +1,21 @@
-%h2 Agency Information
+:ruby
+  lbl_agency= case @user.user_type
+    when 'brand_executive' then 'Corporate'
+    when 'student' then 'Institution'
+    else
+      'Agency'
+  end
+
+%h2= "#{lbl_agency} Information"
 %hr/
 .well.span7
   %fieldset
-    %legend Search existing agency record
+    %legend Search existing #{lbl_agency} Info
     %br/
     .remote-form.form-search{:url => search_agency_path, 'onError' => 'RemoteForm_onError', 'onData' => 'RemoteForm_onData'}
       .notice{style: 'display:none'}
 
-      %input{type: 'search', :placeholder => 'Enter Existing Agency Name',
+      %input{type: 'search', :placeholder => "Enter Existing #{lbl_agency} Name",
              name: 'name', class: 'validation-required input-medium search-query span5'}
       %input{type: 'button', value: 'Search', class: "btn btn-inverse submit"}
 
@@ -28,22 +36,22 @@
 #agency_form{style: "display:#{f.object.found_new_agency_with_value? ? 'block' : 'none'}"}
   %fieldset
     = f.fields_for :agencies do |a|
-      %legend Agency Details
+      %legend #{lbl_agency} Details
       %br/
-      = a.label :name, 'Agency Name'
-      = a.text_field :name, :class => 'input span6', :placeholder => "Name of Your Agency"
+      = a.label :name, "#{lbl_agency} Name"
+      = a.text_field :name, :class => 'input span6', :placeholder => "#{lbl_agency} Name"
 
-      = a.label :website, 'Agency Website'
+      = a.label :website, "#{lbl_agency} Website"
       = a.url_field :website, :class => 'input span6', :placeholder => "http://"
 
-      = a.label :email, 'Agency Email Address'
-      = a.email_field :email, :class => 'input span6', :placeholder => "Agency Email Address"
+      = a.label :email, "#{lbl_agency} Email Address"
+      = a.email_field :email, :class => 'input span6', :placeholder => "#{lbl_agency} Email Address"
 
-      = a.label :phone, 'Agency Phone'
-      = a.phone_field :phone, :class => 'input span6', :placeholder => "Agency Phone"
+      = a.label :phone, "#{lbl_agency} Phone"
+      = a.phone_field :phone, :class => 'input span6', :placeholder => "#{lbl_agency} Phone"
 
       %hr/
-      %legend Agency Address Information
+      %legend #{lbl_agency} Address Information
       = a.label :street, 'Street Address'
       = a.text_field :street, :class => 'input span6', :placeholder => "Enter Road,Street,Block name or number"
       %span.help-inline ex:House-157,Block-D,Shahid Sayem Road

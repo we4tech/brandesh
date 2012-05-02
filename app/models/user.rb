@@ -14,10 +14,11 @@ class User < ActiveRecord::Base
   attr_accessible :name, :designation, :email, :password, :password_confirmation, :remember_me
   attr_accessible :agency_ids, :designation, :name, :user_type, :personal_email,
                   :agencies_attributes, :official_phone, :personal_phone,
-                  :projects_attributes
+                  :projects_attributes, :admin, :corporate_email
 
   has_and_belongs_to_many :agencies
   has_many :projects, :through => :agencies
+  has_many :owned_projects, :foreign_key => 'user_id', :class_name => 'Project'
 
   accepts_nested_attributes_for :agencies, :reject_if => :all_blank
 
@@ -38,6 +39,10 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def admin?
+    self.admin && 'admin' == self.user_type
   end
 
 end

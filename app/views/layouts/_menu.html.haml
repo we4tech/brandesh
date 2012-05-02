@@ -15,9 +15,24 @@
         = link_to 'Schedule', static_page_path('schedule')
 
       - if signed_in?
-        %li
-          %i.icon-list
-          = link_to 'All Entries', user_projects_path(current_user)
-        %li
-          %i.icon-plus
-          = link_to 'New Entry', new_user_project_path(current_user)
+
+        - if current_user.admin?
+          %li
+            %i.icon-ok
+            = link_to 'Approved', approved_projects_path
+
+          %li
+            %i.icon-list
+            = link_to 'Pending Entries', pending_projects_path
+
+          %li
+            %i.icon-list
+            = link_to 'Rejected', rejected_projects_path
+
+        - elsif current_user.advertiser?
+          %li
+            %i.icon-list
+            = link_to 'All Entries', user_projects_path(current_user)
+          %li
+            %i.icon-plus
+            = link_to 'New Entry', new_user_project_path(current_user)

@@ -1,3 +1,23 @@
+:ruby
+  lbl_designation, lbl_official_phone = case f.object.user_type
+    when 'student'
+      ['Current Study Level', 'Your ID Card Number']
+    else
+      ['Your Designation in current company', 'Your Official Phone']
+  end
+
+  lbl_agency_info = case @user.user_type
+    when 'brand_executive' then 'Corporate Info'
+    when 'student' then 'Institution Info'
+    else
+      'Agency Info'
+  end
+
+  ph_official_phone = case f.object.user_type
+    when 'student' then 'ie. 23232323'
+    else
+      "ie. +880713232333"
+  end
 %h2
   #{@user.user_type.to_s.humanize}
   %small Basic Information
@@ -10,16 +30,20 @@
   = f.label :name, 'Full Name'
   = f.text_field :name, :class => 'input span6', :placeholder => "Enter Your Full Name"
 
-  = f.label :designation, 'Your Designation in current company'
-  = f.text_field :designation, :class => 'input span6',
-                 :placeholder => "eg: Account Manager, Marketing Assistant etc..."
+  = f.label :designation, lbl_designation
+  - if 'student' != f.object.user_type
+    = f.text_field :designation, :class => 'input span6',
+                   :placeholder => "eg: Account Manager, Marketing Assistant etc..."
+  - else
+    = f.select :designation, ['School', 'College', 'Undergraduate', 'Graduate', 'Post Graduate', 'PhD'], :class => 'input span6'
 
-  = f.label :personal_email, 'Your Personal Email Address'
-  = f.email_field :personal_email, :class => 'input span5', :placeholder => "Enter your Personal Email"
+  - if 'student' != f.object.user_type
+    = f.label :corporate_email, 'Your Corporate Email Address'
+    = f.email_field :corporate_email, :class => 'input span5', :placeholder => "Enter your Corporate Email"
 
-  %span.help-inline
-    %span.label.label-important ?
-    Optional field, you can enter if you have
+    %span.help-inline
+      %span.label.label-important ?
+      Optional field, you can enter if you have
 
   = f.label :personal_phone, 'Your Personal Phone'
   = f.phone_field :personal_phone, :class => 'input span5', :placeholder => "ie. +880713232333"
@@ -28,12 +52,12 @@
     %span.label.label-important ?
     Optional field, you can enter if you have
 
-  = f.label :official_phone, 'Your Official Phone'
-  = f.phone_field :official_phone, :class => 'input span5', :placeholder => "ie. +880713232333"
+  = f.label :official_phone, lbl_official_phone
+  = f.phone_field :official_phone, :class => 'input span5', :placeholder => ph_official_phone
 
   %hr
-  = f.label :email, 'Your Corporate Email Address'
-  = f.email_field :email, :class => 'input span5', :placeholder => "Enter your Corporate Email"
+  = f.label :email, 'Your Personal Email Address'
+  = f.email_field :email, :class => 'input span5', :placeholder => "Enter your Personal Email"
   %span.help-inline
     %span.label.label-important ?
     This will be your
@@ -45,7 +69,7 @@
   = f.label :password_confirmation, 'Re-enter password'
   = f.password_field :password_confirmation, :class => 'input span5', :placeholder => "Re-Enter your Password"
 
-.span8.alert.alert-info.clearfix{style: "margin-left: 0px"}
+.span5.alert.alert-info.clearfix{style: "margin-left: 0px"}
   Notice:
   You will receive an confirmation email after completing this step.
 
@@ -54,4 +78,4 @@
 %hr
 .clearfix
 %fieldset
-  %a.btn.btn-primary{href: '#agency_info', 'tab-autoswitch' => ''} Next Agency Information >
+  %a.btn.btn-primary{href: '#agency_info', 'tab-autoswitch' => ''} Next #{lbl_agency_info} >
