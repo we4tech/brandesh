@@ -1,22 +1,14 @@
-/ Logo Segment
-.container.logo
-  %a.brandesh.pull-right{:href => "#"} Brandesh
+= render 'layouts/top_menu'
 
-
-%header.margin_top_4#header{role: "banner"}
+%header.margin_top_4#header{role: "banner", style: 'margin-top: 100px'}
   .container
-    .span7
-      .btn-group
-        - if signed_in?
-          = link_to 'Entry Submission Page', user_projects_path(current_user), :class => 'btn btn-inverse'
-        = link_to 'Schedule', static_page_path('schedule'), :class => 'btn btn-inverse'
-        = link_to 'Entry Rules', static_page_path('rules'), :class => 'btn btn-inverse'
-        = link_to 'Entry Help', static_page_path('help'), :class => 'btn btn-inverse'
-
-        - if signed_in?
-          = link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'btn btn-warning'
-      %br/
-
+    - if alert.present? || notice.present?
+      .span11
+        - if alert.present?
+          .alert.alert-error= alert
+        - elsif notice.present?
+          .alert.alert-info= notice
+      .clearfix
 
     %h1.span6.title
       The largest annual festival of creativity brought to you by Ad Club.
@@ -24,7 +16,7 @@
     %section#homeSelection.span4
       %h2 Advertisers submit nomination entries and Delegates can vote for Popular Choice Award!
 
-      .well{style: 'margin-top: 10px'}
+      .blc{style: 'margin-top: 10px'}
         = form_tag join_contest_registration_path, :method => :get, :class => 'form-inline' do
           .control-group
             %h3 Select your entry type!
@@ -39,7 +31,7 @@
           %a{'data-toggle' => "collapse", href: "#entryLogin"} Log In!
 
         #entryLogin.collapse.margin_top_1
-          = form_for(User.new, :url => session_path('user'), :html => {:class => 'well'}) do |f|
+          = form_for(User.new, :url => session_path('user')) do |f|
             .row.span3
               = f.email_field :email, :class => 'input-small', :placeholder => 'Enter Email'
               = f.password_field :password, :class => 'input-small', :placeholder => 'Password'

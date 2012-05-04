@@ -14,51 +14,71 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project       = Project.new
-    @root_category = Category.root
-    @root_media    = Category.media_root
+    if can? :create, Project
+      @project       = Project.new
+      @root_category = Category.root
+      @root_media    = Category.media_root
+    else
+      warn_and_redirect
+    end
   end
 
   def create
-    @project           = Project.new(params[:project])
-    @project.agency_id = current_user.agencies.first.id
+    if can? :create, Project
+      @project           = Project.new(params[:project])
+      @project.agency_id = current_user.agencies.first.id
 
-    if @project.save
-      redirect_to user_projects_path(current_user), :notice => 'Added new ad.'
+      if @project.save
+        redirect_to user_projects_path(current_user), :notice => 'Added new ad.'
+      else
+        @root_category = Category.root
+        @root_media    = Category.media_root
+        render :action => :new
+      end
     else
-      @root_category = Category.root
-      @root_media    = Category.media_root
-      render :action => :new
+      warn_and_redirect
     end
   end
 
   def update
-    @project = current_user.projects.find(params[:id])
-    _params  = params[:project].except(:id, :agency_id)
+    @project = Project.find(params[:id])
 
-    _params.delete(:proof) unless _params[:proof].present?
-    _params.delete(:media) unless _params[:media].present?
+    if can? :update, @project
+      _params  = params[:project].except(:id, :agency_id)
 
-    if @project.update_attributes(_params)
-      redirect_to user_projects_path(current_user), :notice => "Update `#{@project.ad_title}`"
+      _params.delete(:proof) unless _params[:proof].present?
+      _params.delete(:media) unless _params[:media].present?
+
+      if @project.update_attributes(_params)
+        redirect_to user_projects_path(current_user), :notice => "Update `#{@project.ad_title}`"
+      else
+        @root_category = Category.root
+        @root_media    = Category.media_root
+        render :action => :new
+      end
     else
-      @root_category = Category.root
-      @root_media    = Category.media_root
-      render :action => :new
+      warn_and_redirect
     end
   end
 
   def destroy
-    project = current_user.projects.find(params[:id])
-    if project.destroy
-      redirect_to user_projects_path(current_user), :notice => "Remove ad `#{project.ad_title}`"
+    project = Project.find(params[:id])
+    if can? :destroy, project
+      if project.destroy
+        redirect_to user_projects_path(current_user), :notice => "Remove ad `#{project.ad_title}`"
+      else
+        redirect_to user_projects_path(current_user), :notice => "Failed to remove ad `#{project.ad_title}`"
+      end
     else
-      redirect_to user_projects_path(current_user), :notice => "Failed to remove ad `#{project.ad_title}`"
+      warn_and_redirect
     end
   end
 
   def show
-    @project = current_user.projects.find(params[:id])
+    @project = Project.find(params[:id])
+    unless can? :show, @project
+      warn_and_redirect
+    end
   end
 
   def approved

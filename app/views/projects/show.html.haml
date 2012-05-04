@@ -9,9 +9,13 @@
 
     .btn-group.span3{style: 'margin-left: -0px'}
       = link_to 'Link', user_project_path(current_user, @project), :class => 'btn'
-      = link_to 'Edit', edit_user_project_path(current_user, @project), :class => 'btn'
-      = link_to 'Delete', user_project_path(current_user, @project), :class => 'btn btn-danger',
-                :method => :delete, :confirm => 'Do you want to remove this entry?'
+
+      - if can? :edit, @project
+        = link_to 'Edit', edit_user_project_path(current_user, @project), :class => 'btn'
+
+      - if can? :destroy, @project
+        = link_to 'Delete', user_project_path(current_user, @project), :class => 'btn btn-danger',
+                  :method => :delete, :confirm => 'Do you want to remove this entry?'
 
     .btn-group.span3
       - if can?(:update_status, Project)

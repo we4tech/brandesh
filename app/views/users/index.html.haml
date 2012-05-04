@@ -1,0 +1,38 @@
+%section.span10.content_section
+  %h1= @page_title
+
+  %ul.thumbnails
+    - @users.each do |user|
+      %li.span4
+        .thumbnail
+          = image_tag user.picture.url
+          .caption
+            %h4
+              = user.name
+              %small= user.user_type
+
+            - if user.delegate?
+              - if user.paid?
+                %span.label.label-success Approved
+              - elsif !user.paid?
+                %span.label Waiting
+
+            %p &nbsp;
+            .button-group
+              - if can? :manage, User
+                - if user.delegate? && !user.paid?
+                  = link_to 'Set As Paid', set_as_paid_user_path(user), :class => 'btn btn-primary'
+
+                = link_to 'Delete', user_path(user), :class => 'btn btn-danger',
+                          :confirm => 'Do you want to remove this user?', :method => :delete
+
+
+            %p
+              - [:email, :designation, :corporate_email, :official_phone, :personal_phone].each do |field|
+                - if user.send(field).present?
+                  .clearfix
+                  %div{style: 'margin-bottom: 20px'}
+                    %strong.span1{style: 'margin-left: -10px'}= "#{field.to_s.humanize}:"
+                    .span2
+                      = user.send(field)
+

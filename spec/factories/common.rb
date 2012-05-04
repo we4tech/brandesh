@@ -6,6 +6,6 @@ FactoryGirl.define do
   end
 
   sequence :email do |n|
-    "email.user#{n}@email.com"
+    "email#{n * Time.now.to_i}@test.com"
   end
 end

@@ -29,6 +29,14 @@
             %i.icon-list
             = link_to 'Rejected', rejected_projects_path
 
+          %li
+            %i.icon-list
+            = link_to 'All Users', all_users_path(:none)
+          - User::TYPES.each do |ut|
+            %li
+              %i.icon-list
+              = link_to ut.to_s.humanize, all_users_path(ut)
+
         - elsif current_user.advertiser?
           %li
             %i.icon-list
@@ -36,3 +44,8 @@
           %li
             %i.icon-plus
             = link_to 'New Entry', new_user_project_path(current_user)
+
+        - else
+          %li
+            %i.icon-list
+            = link_to 'Entries', approved_projects_path

@@ -1,11 +1,16 @@
+= render 'layouts/top_menu'
+
 = render 'layouts/header'
 
 .container{:role => "main"}
   %h1.visuallyhidden Entry Registration
 
   - if current_user
-    = link_to 'Logout', destroy_user_session_path,
-              :class => 'btn logout btn-warning pull-right', :method => :delete
+    - if current_user.delegate? && !current_user.paid?
+      = link_to 'Make Your Payment', static_page_path(:delegation),
+                :style => "margin-right: 5px",
+                :class => 'btn logout btn-danger pull-right'
+
   - else
     = link_to 'Login', new_user_session_path, :class => 'logout pull-right'
 

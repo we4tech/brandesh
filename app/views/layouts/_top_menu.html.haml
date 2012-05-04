@@ -1,0 +1,26 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.brand{href: root_path} Brandesh
+
+      %ul.nav
+        %li.active
+          %a{href: root_path} Home
+        - if signed_in? && (current_user.admin? || can?(:create, Project))
+          %li
+            = link_to 'Entry Submission Page', user_projects_path(current_user)
+
+        - else
+          %li
+            = link_to 'Entries', approved_projects_path
+        %li
+          = link_to 'Schedule', static_page_path('schedule')
+        %li
+          = link_to 'Entry Rules', static_page_path('rules')
+        %li
+          = link_to 'Entry Help', static_page_path('help')
+
+        - if signed_in?
+          %li
+            = link_to 'Logout', destroy_user_session_path, :method => :delete
+

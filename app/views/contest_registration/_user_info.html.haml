@@ -27,6 +27,9 @@
   = f.hidden_field :user_type
 
 %fieldset
+  = f.label :picture, 'Upload your Picture'
+  = f.file_field :picture
+
   = f.label :name, 'Full Name'
   = f.text_field :name, :class => 'input span6', :placeholder => "Enter Your Full Name"
 
@@ -37,20 +40,20 @@
   - else
     = f.select :designation, ['School', 'College', 'Undergraduate', 'Graduate', 'Post Graduate', 'PhD'], :class => 'input span6'
 
-  - if 'student' != f.object.user_type
-    = f.label :corporate_email, 'Your Corporate Email Address'
-    = f.email_field :corporate_email, :class => 'input span5', :placeholder => "Enter your Corporate Email"
-
-    %span.help-inline
-      %span.label.label-important ?
-      Optional field, you can enter if you have
-
   = f.label :personal_phone, 'Your Personal Phone'
   = f.phone_field :personal_phone, :class => 'input span5', :placeholder => "ie. +880713232333"
 
   %span.help-inline
     %span.label.label-important ?
     Optional field, you can enter if you have
+
+  - if 'student' != f.object.user_type
+    = f.label :corporate_email, 'Your Official Email Address'
+    = f.email_field :corporate_email, :class => 'input span5', :placeholder => "Enter your Official Email"
+
+    %span.help-inline
+      %span.label.label-important ?
+      Optional field, you can enter if you have
 
   = f.label :official_phone, lbl_official_phone
   = f.phone_field :official_phone, :class => 'input span5', :placeholder => ph_official_phone

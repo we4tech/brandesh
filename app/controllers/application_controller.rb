@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
     return request.env['omniauth.origin'] || stored_location_for(resource) || detect_next_url(resource)
   end
 
+  protected
+    def warn_and_redirect
+      redirect_to :root, :alert => 'You are not authorized'
+    end
+
   private
     def detect_next_url(user)
       if user.advertiser?

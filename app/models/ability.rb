@@ -6,12 +6,19 @@ class Ability
 
     case user.user_type
       when 'advertiser'
+        can :create, Project
         can :manage, Project, :user_id => user.id
+        cannot :update_status, Project
+        cannot :manage, User
       when 'admin'
         can :update_status, Project
+        can :unpaid, User
+        can :manage, User
       else
         can :create, User
         can :create, Agency
+        can :show, Project
+        cannot :manage, User
     end
     # Define abilities for the passed in user here. For example:
     #

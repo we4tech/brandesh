@@ -7,16 +7,22 @@ Brandesh::Application.routes.draw do
   scope '/contest' do
     get 'join', :to => 'contest_registration#new', :as => 'join_contest_registration'
     post 'registration', :to => 'contest_registration#create', :as => 'contest_registration'
-    get 'projects/approved', :to => 'projects#approved', :as => 'approved_projects'
-    get 'projects/pending', :to => 'projects#pending', :as => 'pending_projects'
-    get 'projects/rejected', :to => 'projects#rejected', :as => 'rejected_projects'
-    get 'projects/:id/:status', :to => 'projects#update_status', :as => 'update_project_status'
+    get 'entries/approved', :to => 'projects#approved', :as => 'approved_projects'
+    get 'entries/pending', :to => 'projects#pending', :as => 'pending_projects'
+    get 'entries/rejected', :to => 'projects#rejected', :as => 'rejected_projects'
+    get 'entries/:id/:status', :to => 'projects#update_status', :as => 'update_project_status'
+    get 'all/:user_type', :to => 'users#all', :as => 'all_users'
 
     scope '/search' do
       post 'agency', :to => 'search#agencies', :as => 'search_agency'
     end
 
     resources :users do
+
+      member do
+        get :set_as_paid
+      end
+
       resources :projects
     end
   end

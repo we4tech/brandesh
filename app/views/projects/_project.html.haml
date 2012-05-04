@@ -17,10 +17,15 @@
             = link_to 'Approve', update_project_status_path(project, 'approved'), :class => 'btn btn-success'
 
       .btn-group.span3
-        = link_to 'Show', user_project_path(current_user, project), :class => 'btn'
-        = link_to 'Edit', edit_user_project_path(current_user, project), :class => 'btn'
-        = link_to 'Delete', user_project_path(current_user, project), :class => 'btn btn-inverse',
-                  :method => :delete, :confirm => 'Do you want to remove this entry?'
+        - if can? :show, project
+          = link_to 'Show', user_project_path(current_user, project), :class => 'btn'
+
+        - if can? :edit, project
+          = link_to 'Edit', edit_user_project_path(current_user, project), :class => 'btn'
+
+        - if can? :destroy, project
+          = link_to 'Delete', user_project_path(current_user, project), :class => 'btn btn-inverse',
+                    :method => :delete, :confirm => 'Do you want to remove this entry?'
 
 
 .clearfix
