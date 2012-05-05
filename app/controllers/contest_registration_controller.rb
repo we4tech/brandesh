@@ -26,15 +26,7 @@ class ContestRegistrationController < ApplicationController
     if @user.save
       sign_in @user
 
-      redirect_to (if @user.advertiser?
-        new_user_project_path(@user)
-      elsif @user.delegate?
-        static_page_path('delegation')
-      elsif @user.admin?
-        pending_projects_path
-      else
-        approved_projects_path
-      end)
+      redirect_to detect_next_url(@user)
     else
       render :action => :new
     end

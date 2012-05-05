@@ -11,14 +11,17 @@ class ApplicationController < ActionController::Base
       redirect_to :root, :alert => 'You are not authorized'
     end
 
-  private
     def detect_next_url(user)
       if user.advertiser?
-        user_projects_path(current_user)
+        new_user_project_path(user)
+      elsif user.delegate? && !user.paid
+        static_page_path('delegation')
+      elsif user.delegate?
+        static_page_path('notice')
       elsif user.admin?
         pending_projects_path
       else
         approved_projects_path
       end
     end
-end
+  end

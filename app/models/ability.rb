@@ -19,6 +19,7 @@ class Ability
         can :create, Agency
         can :show, Project
         cannot :manage, User
+        cannot :create, Project
     end
     # Define abilities for the passed in user here. For example:
     #

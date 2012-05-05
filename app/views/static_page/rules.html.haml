@@ -1,9 +1,6 @@
 - page_title 'Entry Rules'
 
 .span10
-  %br/
-  %h1 Entry Rules
-
   %ul
     - files_dir = Rails.root.join('public', 'downloads')
     - Dir.glob(File.join(files_dir, '*.pdf')).each do |file|

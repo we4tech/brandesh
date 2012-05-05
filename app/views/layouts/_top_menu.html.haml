@@ -4,9 +4,9 @@
       %a.brand{href: root_path} Brandesh
 
       %ul.nav
-        %li.active
+        %li
           %a{href: root_path} Home
-        - if signed_in? && (current_user.admin? || can?(:create, Project))
+        - if signed_in? && can?(:create, Project)
           %li
             = link_to 'Entry Submission Page', user_projects_path(current_user)
 
@@ -22,5 +22,8 @@
 
         - if signed_in?
           %li
-            = link_to 'Logout', destroy_user_session_path, :method => :delete
+            = link_to "Logout (#{current_user.name} - #{current_user.user_type})", destroy_user_session_path, :method => :delete
+        - else
+          %li
+            = link_to 'Login', new_user_session_path
 

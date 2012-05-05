@@ -55,7 +55,8 @@ jQuery(document).ready(function () {
   });
 
   // Load initial description
-  $('#category-description').html(categoriesDescription[jQuery('#project_category_id')[0].selectedIndex]);
+  if ($('#category-description').length > 0)
+    $('#category-description').html(categoriesDescription[jQuery('#project_category_id')[0].selectedIndex]);
 
   // Choose credits based on media type
   $('#project_media_type_id').bind('change', function(e) {
@@ -64,7 +65,9 @@ jQuery(document).ready(function () {
   });
 
   // Load default credits
-  $($('.credits_panel')[$('#project_media_type_id')[0].selectedIndex]).show();
+  if ($('.credits_panel').length > 0) {
+    $($('.credits_panel')[$('#project_media_type_id')[0].selectedIndex]).show();
+  }
 
   // Remove unused credits during submission
   $('#new_project, #edit_project').bind('submit', function() {
@@ -74,6 +77,17 @@ jQuery(document).ready(function () {
         $el.remove();
       }
     });
+  });
+
+  // Determine currently active tab
+  $('.navbar .nav li a').each(function() {
+    var el = $(this);
+    var urlParts = window.location.href.split('/');
+    var lastPart = urlParts[urlParts.length - 1];
+
+    if (el.text().toLowerCase().indexOf(lastPart) != -1) {
+      el.parent().addClass('active');
+    }
   });
 });
 
