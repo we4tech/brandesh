@@ -38,6 +38,11 @@ namespace :util do
   task :assets_precompile do
     run "cd #{current_path} && rake assets:precompile RAILS_ENV=#{stage.to_s}"
   end
+
+  desc 'Start mongrel instance'
+  task :start_app do
+    run "cd #{current_path} && rake assets:precompile RAILS_ENV=#{stage.to_s}"
+  end
 end
 
 after 'deploy:update', 'util:symlink_db_config',
