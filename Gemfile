@@ -36,6 +36,8 @@ end
 
 group :production do
   gem 'mysql2'
+  gem 'mongrel'
+  gem 'mongrel_cluster'
 end
 
 # Gems used only for assets and not required
