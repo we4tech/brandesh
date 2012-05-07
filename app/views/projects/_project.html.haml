@@ -7,18 +7,19 @@
       %p= truncate(project.ad_description, :length => 120)
 
     .row
-      .btn-group.span3{:style => "margin-left: -0px"}
+      .btn-group.span5{:style => "margin-left: -0px"}
         - if can?(:update_status, Project)
           - if project.pending?
-            = link_to 'Approve', update_project_status_path(project, 'approved'), :class => 'btn btn-success'
-            = link_to 'Reject', update_project_status_path(project, 'rejected'), :class => 'btn btn-warning'
+            = link_to 'Approve', update_project_status_path(project, 'approved'), :class => 'btn btn-primary'
+            = link_to 'Reject', update_project_status_path(project, 'rejected'),
+                      :class => 'btn',
+                      :confirm => 'Do you really want to reject this project?'
 
           - elsif project.rejected?
             = link_to 'Approve', update_project_status_path(project, 'approved'), :class => 'btn btn-success'
 
-      .btn-group.span3
         - if can? :show, project
-          = link_to 'Show', user_project_path(current_user, project), :class => 'btn'
+          = link_to 'Show Details', show_project_path(project), :class => 'btn'
 
         - if can? :edit, project
           = link_to 'Edit', edit_user_project_path(current_user, project), :class => 'btn'

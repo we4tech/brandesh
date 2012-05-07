@@ -18,6 +18,8 @@
     = render 'layouts/menu'
 
     %section.span10.content_section
+      %h1.title= @page_title
+
       - if notice.present?
         %div{style: 'padding: 10px'}
           .alert.alert-success= notice
@@ -27,7 +29,5 @@
           .alert.alert-message= alert
 
       .clearfix
-
-      %h1.title= @page_title
 
       = yield

@@ -1,33 +1,36 @@
 - page_title @project.ad_title
 
 %section.span10
+  %h3{style: 'margin-left: 20px'}= @project.ad_headline
+
+  .btn-group.span3{style: 'margin-left: 20px'}
+    - if can?(:update_status, Project)
+      - if @project.pending?
+        = link_to 'Approve', update_project_status_path(@project, 'approved'), :class => 'btn btn-mini btn-primary'
+        = link_to 'Reject', update_project_status_path(@project, 'rejected'),
+                  :class => 'btn btn-mini', confirm: 'Do you really want to reject this project?'
+
+    = link_to 'Link', show_project_path(@project), :class => 'btn btn-mini'
+
+    - if can? :edit, @project
+      = link_to 'Edit', edit_user_project_path(current_user, @project), :class => 'btn btn-mini'
+
+    - if can? :destroy, @project
+      = link_to 'Delete', user_project_path(current_user, @project), :class => 'btn btn-danger btn-mini',
+                :method => :delete, :confirm => 'Do you want to remove this entry?'
+
   %br/
-  %h1
-    = @project.ad_title
-    %small= @project.ad_headline
-    .clearfix
-
-    .btn-group.span3{style: 'margin-left: -0px'}
-      = link_to 'Link', user_project_path(current_user, @project), :class => 'btn'
-
-      - if can? :edit, @project
-        = link_to 'Edit', edit_user_project_path(current_user, @project), :class => 'btn'
-
-      - if can? :destroy, @project
-        = link_to 'Delete', user_project_path(current_user, @project), :class => 'btn btn-danger',
-                  :method => :delete, :confirm => 'Do you want to remove this entry?'
-
-    .btn-group.span3
-      - if can?(:update_status, Project)
-        - if @project.pending?
-          = link_to 'Approve', update_project_status_path(@project, 'approved'), :class => 'btn btn-success'
-          = link_to 'Reject', update_project_status_path(@project, 'rejected'), :class => 'btn btn-warning'
-
-    %br/
+  %br/
 
   .span8
     %table.table.table-bordered.table-striped{width: '400px'}
       %tbody
+        %tr
+          %th Status
+          %td= @project.status
+        %tr
+          %th Associated With
+          %td= @project.agency.name
         %tr
           %th Media Type
           %td= @project.media_type.name
@@ -50,17 +53,20 @@
           %th Media
           %td= link_to 'Download', @project.media.url
 
-  .span8.well
-    %h3 Ad Description
-    %p= @project.ad_description
+  - if @project.ad_description.present?
+    .span8.well
+      %h3 Ad Description
+      %p= @project.ad_description
 
-  .span8.well
-    %h3 Ad Rationale
-    %p= @project.ad_rationale
+  - if @project.ad_rationale.present?
+    .span8.well
+      %h3 Ad Rationale
+      %p= @project.ad_rationale
 
-  .span8.well
-    %h3 Ad Consumer Insight
-    %p= @project.ad_consumer_insight
+  - if @project.ad_consumer_insight.present?
+    .span8.well
+      %h3 Ad Consumer Insight
+      %p= @project.ad_consumer_insight
 
   .span8.brand-info
     %h3 Brand Information
@@ -79,14 +85,15 @@
           %th Brand Details
           %td= @project.brand_details
 
-  .span8.credits-info
-    %h3 Credits
-    %hr/
+  - if (@project.credits_hash || {}).keys.present?
+    .span8.credits-info
+      %h3 Credits
+      %hr/
 
-    %table.table.table-bordered.table-striped
-      %tbody
-        - @project.credits_hash.each do |k, v|
-          - if v.present?
-            %tr
-              %th= k
-              %td= v
+      %table.table.table-bordered.table-striped
+        %tbody
+          - @project.credits_hash.each do |k, v|
+            - if v.present?
+              %tr
+                %th= k
+                %td= v

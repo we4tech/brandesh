@@ -11,6 +11,7 @@ Brandesh::Application.routes.draw do
     get 'entries/pending', :to => 'projects#pending', :as => 'pending_projects'
     get 'entries/rejected', :to => 'projects#rejected', :as => 'rejected_projects'
     get 'entries/:id/:status', :to => 'projects#update_status', :as => 'update_project_status'
+    get 'entries/:id', :to => 'projects#show', :as => 'show_project'
     get 'all/:user_type', :to => 'users#all', :as => 'all_users'
 
     scope '/search' do
