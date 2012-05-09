@@ -2,4 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  advertiser: Ad Agency
+  brand_executive: Brand
+  student: Student
+  delegate: Delegate
+  other: Other Professionals

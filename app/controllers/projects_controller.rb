@@ -84,6 +84,9 @@ class ProjectsController < ApplicationController
   def approved
     @page_title = 'Approved Entries'
     @projects   = Project.approved.recent
+
+    return redirect_to static_page_path('notice') if @projects.empty?
+
     render :index
   end
 

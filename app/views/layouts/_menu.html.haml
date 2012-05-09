@@ -35,7 +35,7 @@
           - User::TYPES.each do |ut|
             %li
               %i.icon-list
-              = link_to ut.to_s.humanize, all_users_path(ut)
+              = link_to I18n.t(ut.to_s), all_users_path(ut)
 
         - elsif current_user.advertiser?
           %li

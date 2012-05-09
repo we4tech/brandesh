@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  TYPES = [:advertiser, :brand_executive, :student, :delegate]
+  TYPES = [:advertiser, :brand_executive, :student, :delegate, :other]
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :lockable, :timeoutable

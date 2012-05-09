@@ -22,7 +22,7 @@
             %h3 Select your entry type!
             .controls
             %select.span2#regSelection{name: 'user[user_type]'}
-              = options_for_select(User::TYPES.map {|_t| [_t.to_s.humanize, _t]})
+              = options_for_select(User::TYPES.map {|_t| [I18n.t(_t.to_s), _t]})
             %button.btn.btn-primary{type: "submit"} Go
 
       - unless signed_in?

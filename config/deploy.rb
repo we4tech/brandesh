@@ -39,11 +39,18 @@ namespace :util do
     run "cd #{current_path} && rake assets:precompile RAILS_ENV=#{stage.to_s}"
   end
 
-  desc 'Start mongrel instance'
+  desc 'Stop app server'
+  task :stop_app do
+    run "cd #{current_path} && cat #{current_path}/tmp/pids/unicorn.pid | xargs kill -9 \"$@\""
+  end
+
+  desc 'Start app server'
   task :start_app do
-    run "cd #{current_path} && rake assets:precompile RAILS_ENV=#{stage.to_s}"
+    run "cd #{current_path} && unicorn_rails -p 8800 -E #{stage.to_s} -D"
   end
 end
 
+before 'deploy:update', 'util:stop_app'
 after 'deploy:update', 'util:symlink_db_config',
-      'util:db_migrate', 'util:assets_precompile'
+      'util:db_migrate', 'util:assets_precompile',
+      'util:start_app'
